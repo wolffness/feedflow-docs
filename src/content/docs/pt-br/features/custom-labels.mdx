@@ -1,0 +1,44 @@
+---
+title: Custom Labels
+description: Como usar custom labels para segmentar produtos nos anúncios.
+---
+
+Custom labels são campos extras no feed XML (`custom_label_0` a `custom_label_4`) que permitem criar segmentações avançadas nas plataformas de anúncios.
+
+## Para que servem?
+
+No Meta Ads e Google Shopping, você pode criar **conjuntos de produtos** (product sets) baseados em custom labels. Isso permite:
+
+- Separar campanhas por faixa de preço
+- Criar campanhas só para produtos em promoção
+- Destacar lançamentos
+- Agrupar por nível de estoque
+
+## Tipos de regras
+
+| Tipo | Exemplo | Descrição |
+|---|---|---|
+| Faixa de preço | "Até R$50", "R$50-100" | Segmenta por preço |
+| Nível de desconto | "Sem desconto", "20-50%" | Segmenta por % de desconto |
+| Lançamento | "Novo" | Produtos criados nos últimos X dias |
+| Nível de estoque | "Baixo", "Alto" | Segmenta por quantidade |
+| Tag | "best-seller" | Usa tags do produto |
+| Marca | "Nike" | Filtra por marca |
+| Categoria | "Feminino > Saias" | Usa a categoria do produto |
+| Valor estático | "Coleção Verão" | Texto fixo para todos os produtos |
+
+## Como configurar
+
+1. Vá em **Custom Labels** no menu lateral
+2. Escolha um dos 5 slots (0 a 4)
+3. Adicione regras — a primeira regra que corresponder ao produto define o label
+4. Use os templates rápidos para configurações comuns
+
+## Templates rápidos
+
+O FeedFlow oferece 4 templates prontos:
+
+- **Faixas de Preço** — automaticamente segmenta em 4 faixas
+- **Nível de Desconto** — "Sem desconto", "Até 20%", "20-50%", "Acima de 50%"
+- **Lançamentos** — marca produtos novos (últimos 30 dias)
+- **Estoque** — "Estoque Baixo", "Estoque Médio", "Estoque Alto"

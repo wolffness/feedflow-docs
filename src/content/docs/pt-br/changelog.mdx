@@ -1,0 +1,29 @@
+---
+title: Novidades
+description: Atualizações e novas funcionalidades do FeedFlow.
+---
+
+## Março 2026
+
+### Sistema de Filtros Rule-Builder
+- Novo sistema de filtros com operadores (maior, maior ou igual, menor, menor ou igual, igual, diferente, entre)
+- 3 níveis de filtro: Global, Por Categoria, Por Feed
+- Filtragem no nível da variação (padrão da indústria)
+- Impacto em tempo real com contagem de produtos e variações
+- E/OU independente entre cada par de regras
+
+### Multi-plataforma
+- Suporte a múltiplas plataformas de e-commerce
+- Factory pattern para conectores (Nuvemshop, futuro: Tray, Loja Integrada)
+- Feed URL genérico baseado em ID interno
+
+### Dashboard Standalone
+- Login via OTP (código de 6 dígitos por email)
+- 7 seções completas: Dashboard, Feeds, Filtros, Custom Labels, Compliance, Plataformas, Conta
+- Sidebar colapsável com navegação intuitiva
+- Tela mobile "FeedFlow funciona melhor no desktop"
+
+### Performance
+- Cache Redis para preview de filtros (snapshots de produtos)
+- Feed XML cacheado com gzip
+- Sync incremental via webhooks

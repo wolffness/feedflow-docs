@@ -1,0 +1,41 @@
+---
+title: Feeds
+description: Como gerenciar seus feeds XML por plataforma de anúncios.
+---
+
+O FeedFlow gera feeds XML separados para cada plataforma de anúncios. Cada feed pode ter configurações próprias de filtros e custom labels.
+
+## Plataformas
+
+| Feed | Formato | Uso |
+|---|---|---|
+| **Meta Ads** | RSS/XML | Facebook & Instagram Catalog |
+| **Google Shopping** | RSS/XML | Google Merchant Center |
+| **TikTok Ads** | RSS/XML | TikTok Shop Catalog |
+| **Pinterest** | RSS/XML | Pinterest Shopping |
+
+## URL do feed
+
+Cada loja tem uma URL pública do feed:
+
+```
+https://feed-flow.app/feed/{id}/catalog.xml
+```
+
+Cadastre esta URL na plataforma de anúncios desejada. O feed é atualizado automaticamente conforme o intervalo do seu plano.
+
+## Monitoramento
+
+O FeedFlow detecta automaticamente quando cada plataforma busca seu feed via User-Agent. No dashboard, você vê o status:
+
+- **Em uso** — a plataforma está buscando o feed regularmente
+- **Aguardando** — feed cadastrado mas ainda não acessado
+- **Desativado** — feed não configurado
+
+## Intervalos de atualização
+
+| Plano | Intervalo |
+|---|---|
+| Trial / Premium | 15 minutos |
+| Pro | 2 horas |
+| Básico | 6 horas |

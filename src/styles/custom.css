@@ -1,0 +1,25 @@
+:root {
+	--sl-color-accent-low: #FFF8E6;
+	--sl-color-accent: #B37800;
+	--sl-color-accent-high: #9A6700;
+	--sl-color-white: #FAF8F3;
+	--sl-color-gray-1: #F5F1EA;
+	--sl-color-gray-2: #E8E2D9;
+	--sl-color-gray-3: #A09888;
+	--sl-color-gray-4: #5C5145;
+	--sl-color-gray-5: #2C2518;
+	--sl-font: 'Inter', var(--sl-font-system);
+	--sl-font-system-mono: 'JetBrains Mono', monospace;
+}
+
+:root[data-theme='dark'] {
+	--sl-color-accent-low: #3D2800;
+	--sl-color-accent: #D4A050;
+	--sl-color-accent-high: #FFD699;
+	--sl-color-white: #1A1410;
+	--sl-color-gray-1: #2A2218;
+	--sl-color-gray-2: #3A3228;
+	--sl-color-gray-3: #6A5E50;
+	--sl-color-gray-4: #B8B0A0;
+	--sl-color-gray-5: #F0EDE6;
+}

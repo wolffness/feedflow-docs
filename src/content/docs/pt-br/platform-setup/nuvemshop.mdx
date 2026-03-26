@@ -1,0 +1,47 @@
+---
+title: Nuvemshop
+description: Como conectar sua loja Nuvemshop ao FeedFlow.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+## Conectando sua loja
+
+<Steps>
+
+1. **Acesse o painel FeedFlow**
+
+   Faça login em [feed-flow.app/dashboard](https://feed-flow.app/dashboard/).
+
+2. **Vá em Plataformas**
+
+   No menu lateral, clique em **Plataformas**.
+
+3. **Clique em Conectar Nuvemshop**
+
+   Você será redirecionado para a Nuvemshop para autorizar o acesso.
+
+4. **Autorize o app**
+
+   Clique em **Aceitar e começar a usar**. Seus produtos serão sincronizados automaticamente.
+
+</Steps>
+
+## Sincronização
+
+Após conectar, o FeedFlow importa:
+
+- **Produtos** — nome, descrição, preço, preço promocional, SKU, código de barras
+- **Variações** — tamanhos, cores, estoque por variação
+- **Categorias** — estrutura hierárquica completa
+- **Imagens** — imagem principal + até 10 adicionais
+
+### Atualização automática
+
+- **Webhooks** — produtos e categorias são atualizados em tempo real quando você faz alterações na Nuvemshop
+- **Sync completo** — diariamente às 3h da manhã (rede de segurança)
+- **Feed** — regenerado conforme o intervalo do seu plano (de 15min a 6h)
+
+## Desconectando
+
+Para desconectar sua loja, vá em **Plataformas** e clique em **Desconectar**. Seus dados serão mantidos por 30 dias caso queira reconectar.

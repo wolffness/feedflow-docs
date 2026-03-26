@@ -1,0 +1,43 @@
+---
+title: Conceitos Principais
+description: Entenda feeds, filtros, custom labels e a hierarquia de prioridade do FeedFlow.
+---
+
+## Feed XML
+
+Um feed XML é um arquivo estruturado com seus produtos, usado por plataformas de anúncios (Meta, Google, TikTok, Pinterest) para criar catálogos e anúncios dinâmicos.
+
+O FeedFlow gera e mantém esse feed atualizado automaticamente, sincronizando com sua loja.
+
+## Filtros
+
+Filtros determinam quais produtos (e variações) permanecem no feed. Você define condições como:
+
+- **Estoque (variação) > 10** — manter variações com mais de 10 unidades
+- **Preço Efetivo < 500** — manter produtos abaixo de R$500
+
+### Hierarquia de filtros
+
+Os filtros funcionam em 3 níveis. O mais específico sempre ganha:
+
+| Prioridade | Nível | Descrição |
+|---|---|---|
+| 1 (máxima) | **Por Feed** | Regras específicas para Meta, Google, etc. |
+| 2 | **Por Categoria** | Regras por categoria de produto |
+| 3 (base) | **Global** | Regras padrão para todos os produtos |
+
+## Custom Labels
+
+Custom labels são campos extras no feed (custom_label_0 a custom_label_4) que permitem segmentar produtos nas plataformas de anúncios. Exemplos:
+
+- **Faixa de preço** — "Até R$50", "R$50-100", "Acima de R$100"
+- **Nível de desconto** — "Sem desconto", "Até 20%", "Acima de 50%"
+- **Novidades** — "Lançamento" para produtos criados nos últimos 30 dias
+
+## Compliance
+
+O compliance checker valida seu feed contra as regras de cada plataforma, identificando campos obrigatórios faltantes, formatos incorretos e oportunidades de melhoria.
+
+## Monitoramento
+
+O FeedFlow detecta automaticamente quando Meta, Google, TikTok ou Pinterest buscam seu feed, mostrando o status de cada plataforma no dashboard.

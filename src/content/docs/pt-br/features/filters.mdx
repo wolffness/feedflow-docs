@@ -1,0 +1,74 @@
+---
+title: Filtros
+description: Como usar o sistema de filtros para controlar quais produtos aparecem no seu feed.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Os filtros determinam quais produtos e variações permanecem no seu feed. O FeedFlow usa uma abordagem de **regras positivas**: você define as condições que os produtos devem atender para **permanecer** no feed.
+
+## Como funciona
+
+Cada regra tem 3 partes:
+
+| Parte | Exemplo | Descrição |
+|---|---|---|
+| **Campo** | Estoque (variação) | O que está sendo avaliado |
+| **Operador** | > (maior que) | Como comparar |
+| **Valor** | 10 | O limite |
+
+**Resultado:** "Manter variações com estoque maior que 10"
+
+### Operadores disponíveis
+
+| Símbolo | Significado |
+|---|---|
+| `>` | Maior que |
+| `>=` | Maior ou igual |
+| `<` | Menor que |
+| `<=` | Menor ou igual |
+| `=` | Igual a |
+| `!=` | Diferente de |
+| `Entre` | Valor entre dois limites |
+
+### Campos disponíveis
+
+| Campo | Nível | Descrição |
+|---|---|---|
+| Estoque (variação) | Variação | Estoque individual de cada variação |
+| Preço Efetivo | Variação | Menor entre preço normal e promocional |
+| Grade Furada (%) | Produto | % de variações sem estoque |
+| Estoque Total (produto) | Produto | Soma do estoque de todas as variações |
+
+## Combinando regras (E / OU)
+
+Entre cada par de regras, você escolhe **E** ou **OU**:
+
+- **OU** — manter se **qualquer** regra for verdadeira
+- **E** — manter apenas se **todas** as regras forem verdadeiras
+
+<Aside type="tip">
+Use **E** quando quer que o produto atenda a TODAS as condições. Use **OU** quando qualquer condição ser suficiente.
+</Aside>
+
+## Três níveis de filtros
+
+### Global
+Aplicado a todos os produtos do feed. É a base.
+
+### Por Categoria
+Sobrescreve o global para produtos de uma categoria específica. Exemplo: "Para a categoria Batas, manter apenas variações com estoque > 20".
+
+### Por Feed (plataforma)
+Prioridade máxima. Cada feed (Meta, Google, TikTok, Pinterest) pode ter suas próprias regras.
+
+<Aside type="caution">
+O nível mais específico sempre ganha: **Feed > Categoria > Global**.
+</Aside>
+
+## Impacto em tempo real
+
+O footer fixo mostra o impacto dos filtros em tempo real:
+- Quantos **produtos** permanecem no feed
+- Quantas **variações** permanecem
+- Quantos foram removidos
