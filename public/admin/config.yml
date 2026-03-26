@@ -1,0 +1,72 @@
+backend:
+  name: github
+  repo: wolffness/feedflow-docs
+  branch: main
+  base_url: https://docs.feed-flow.app
+  auth_endpoint: /api/auth
+
+site_url: https://docs.feed-flow.app
+display_url: https://docs.feed-flow.app
+logo_url: https://feed-flow.app/static/img/logo-feedflow-dark.svg
+
+media_folder: "src/assets/images"
+public_folder: "/src/assets/images"
+
+slug:
+  encoding: "unicode"
+  clean_accents: true
+
+locale: "pt"
+
+collections:
+  - name: "getting-started"
+    label: "Primeiros Passos"
+    folder: "src/content/docs/pt-br/getting-started"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "mdx"
+    format: "frontmatter"
+    fields:
+      - { label: "Titulo", name: "title", widget: "string" }
+      - { label: "Descricao", name: "description", widget: "text" }
+      - { label: "Conteudo", name: "body", widget: "markdown" }
+
+  - name: "platform-setup"
+    label: "Plataformas"
+    folder: "src/content/docs/pt-br/platform-setup"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "mdx"
+    format: "frontmatter"
+    fields:
+      - { label: "Titulo", name: "title", widget: "string" }
+      - { label: "Descricao", name: "description", widget: "text" }
+      - { label: "Conteudo", name: "body", widget: "markdown" }
+
+  - name: "features"
+    label: "Funcionalidades"
+    folder: "src/content/docs/pt-br/features"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "mdx"
+    format: "frontmatter"
+    fields:
+      - { label: "Titulo", name: "title", widget: "string" }
+      - { label: "Descricao", name: "description", widget: "text" }
+      - { label: "Conteudo", name: "body", widget: "markdown" }
+
+  - name: "guides"
+    label: "Guias"
+    folder: "src/content/docs/pt-br/guides"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "mdx"
+    format: "frontmatter"
+    fields:
+      - { label: "Titulo", name: "title", widget: "string" }
+      - { label: "Descricao", name: "description", widget: "text" }
+      - { label: "Conteudo", name: "body", widget: "markdown" }
