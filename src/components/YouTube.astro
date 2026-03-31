@@ -1,0 +1,38 @@
+---
+interface Props {
+  id: string;
+  title?: string;
+}
+
+const { id, title = "Vídeo tutorial" } = Astro.props;
+---
+
+<div class="yt-wrapper">
+  <iframe
+    src={`https://www.youtube.com/embed/${id}`}
+    title={title}
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    loading="lazy"
+  ></iframe>
+</div>
+
+<style>
+  .yt-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    margin: 1.5rem 0;
+    border: 1px solid var(--sl-color-gray-2);
+  }
+
+  .yt-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
