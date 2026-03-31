@@ -1,15 +1,19 @@
+/* FeedFlow Design System — Starlight override */
+
 :root {
 	--sl-color-accent-low: #FFF8E6;
 	--sl-color-accent: #B37800;
-	--sl-color-accent-high: #9A6700;
+	--sl-color-accent-high: #805800;
 	--sl-color-white: #FAF8F3;
 	--sl-color-gray-1: #F5F1EA;
 	--sl-color-gray-2: #E8E2D9;
 	--sl-color-gray-3: #A09888;
 	--sl-color-gray-4: #5C5145;
 	--sl-color-gray-5: #2C2518;
+	--sl-color-gray-6: #1A1410;
+	--sl-color-black: #12100D;
 	--sl-font: 'Inter', var(--sl-font-system);
-	--sl-font-system-mono: 'JetBrains Mono', monospace;
+	--sl-font-system-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
 }
 
 :root[data-theme='dark'] {
@@ -21,5 +25,108 @@
 	--sl-color-gray-2: #3A3228;
 	--sl-color-gray-3: #6A5E50;
 	--sl-color-gray-4: #B8B0A0;
-	--sl-color-gray-5: #F0EDE6;
+	--sl-color-gray-5: #E8E2D8;
+	--sl-color-gray-6: #F0EDE6;
+	--sl-color-black: #FAF8F3;
+}
+
+/* ── Logo ── */
+.site-title img {
+	border-radius: 6px;
+}
+
+/* ── Header ── */
+header.header {
+	border-bottom: 1px solid var(--sl-color-gray-2);
+	background: var(--sl-color-white);
+}
+
+/* ── Sidebar ── */
+nav.sidebar {
+	border-inline-end: 1px solid var(--sl-color-gray-2);
+}
+
+.sidebar-content a[aria-current='page'] {
+	background: var(--sl-color-accent-low);
+	color: var(--sl-color-accent);
+	font-weight: 600;
+}
+
+/* ── Content typography ── */
+.sl-markdown-content {
+	font-size: 1rem;
+	line-height: 1.75;
+}
+
+.sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3 {
+	letter-spacing: -0.02em;
+	font-weight: 700;
+}
+
+.sl-markdown-content h2 {
+	margin-top: 2.5rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid var(--sl-color-gray-2);
+}
+
+.sl-markdown-content p {
+	color: var(--sl-color-gray-4);
+}
+
+:root[data-theme='dark'] .sl-markdown-content p {
+	color: var(--sl-color-gray-5);
+}
+
+/* ── Blockquotes ── */
+.sl-markdown-content blockquote {
+	background: var(--sl-color-accent-low);
+	border-inline-start-color: var(--sl-color-accent);
+	border-radius: 0 0.5rem 0.5rem 0;
+	padding: 1rem 1.25rem;
+}
+
+/* ── Code ── */
+.sl-markdown-content code {
+	font-family: 'JetBrains Mono', ui-monospace, monospace;
+	font-size: 0.875em;
+	background: var(--sl-color-gray-1);
+	border: 1px solid var(--sl-color-gray-2);
+	border-radius: 0.25rem;
+	padding: 0.1em 0.35em;
+}
+
+.sl-markdown-content pre {
+	border: 1px solid var(--sl-color-gray-2);
+	border-radius: 0.5rem;
+}
+
+.sl-markdown-content pre code {
+	background: transparent;
+	border: none;
+	padding: 0;
+	font-size: 0.875rem;
+}
+
+/* ── Asides / callouts ── */
+.starlight-aside {
+	border-radius: 0.5rem;
+}
+
+.starlight-aside--tip {
+	--sl-color-asides-text-accent: var(--sl-color-accent);
+	--sl-color-asides-border: var(--sl-color-accent);
+	background: var(--sl-color-accent-low);
+}
+
+/* ── Table of contents ── */
+.right-sidebar starlight-toc a[aria-current='true'] {
+	color: var(--sl-color-accent);
+	font-weight: 600;
+}
+
+/* ── Footer ── */
+footer.footer {
+	border-top: 1px solid var(--sl-color-gray-2);
 }

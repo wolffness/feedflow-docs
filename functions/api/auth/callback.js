@@ -1,10 +1,22 @@
+const NO_STORE_HEADERS = {
+  'Cache-Control': 'no-store, private',
+  'Pragma': 'no-cache',
+  'Expires': '0',
+};
+
 export async function onRequestGet(context) {
   const { request, env } = context;
   const url = new URL(request.url);
   const code = url.searchParams.get('code');
 
   if (!code) {
-    return new Response('Missing code parameter', { status: 400 });
+    return new Response('Missing code parameter', {
+      status: 400,
+      headers: {
+        'Content-Type': 'text/plain; charset=UTF-8',
+        ...NO_STORE_HEADERS,
+      },
+    });
   }
 
   const response = await fetch('https://github.com/login/oauth/access_token', {
@@ -25,7 +37,10 @@ export async function onRequestGet(context) {
   if (!data.access_token) {
     return new Response(JSON.stringify({ error: 'Failed to get token', details: data }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        ...NO_STORE_HEADERS,
+      },
     });
   }
 
@@ -46,6 +61,9 @@ export async function onRequestGet(context) {
       window.opener.postMessage("authorizing:github", "*");
     })();
   </script></body></html>`, {
-    headers: { 'Content-Type': 'text/html;charset=UTF-8' },
+    headers: {
+      'Content-Type': 'text/html;charset=UTF-8',
+      ...NO_STORE_HEADERS,
+    },
   });
 }

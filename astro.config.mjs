@@ -6,14 +6,15 @@ export default defineConfig({
 	site: 'https://docs.feed-flow.app',
 	integrations: [
 		starlight({
-			title: 'FeedFlow Docs',
+			title: 'FeedFlow',
+			logo: {
+				src: './src/assets/logo-icon.svg',
+				alt: 'FeedFlow',
+			},
 			defaultLocale: 'pt-br',
 			locales: {
 				'pt-br': { label: 'Português', lang: 'pt-BR' },
 			},
-			social: [
-				{ icon: 'github', label: 'GitHub', href: 'https://github.com/wolffness/feedflow-docs' },
-			],
 			sidebar: [
 				{
 					label: 'Começando',
@@ -34,6 +35,9 @@ export default defineConfig({
 				{ label: 'FAQ', link: '/pt-br/faq/' },
 				{ label: 'Novidades', link: '/pt-br/changelog/' },
 			],
+			components: {
+				SocialIcons: './src/components/SocialIcons.astro',
+			},
 			customCss: ['./src/styles/custom.css'],
 			head: [
 				{
@@ -46,8 +50,16 @@ export default defineConfig({
 				{
 					tag: 'link',
 					attrs: {
+						rel: 'preconnect',
+						href: 'https://fonts.gstatic.com',
+						crossorigin: '',
+					},
+				},
+				{
+					tag: 'link',
+					attrs: {
 						rel: 'stylesheet',
-						href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+						href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap',
 					},
 				},
 			],
