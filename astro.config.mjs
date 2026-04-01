@@ -12,6 +12,7 @@ export default defineConfig({
 				alt: 'FeedFlow',
 			},
 			defaultLocale: 'root',
+			disable404Route: true,
 			locales: {
 				root: { label: 'Português', lang: 'pt-BR' },
 			},
