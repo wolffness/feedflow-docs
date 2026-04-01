@@ -18,73 +18,23 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: 'Começando',
-					items: [
-						{ label: 'Visão Geral', slug: 'getting-started' },
-						{ label: 'Quick Start', slug: 'getting-started/quick-start' },
-						{ label: 'Conceitos Principais', slug: 'getting-started/core-concepts' },
-					],
+					autogenerate: { directory: 'getting-started' },
 				},
 				{
 					label: 'Plataformas',
-					items: [
-						{ label: 'Nuvemshop', slug: 'platform-setup/nuvemshop' },
-					],
+					autogenerate: { directory: 'platform-setup' },
 				},
 				{
-					label: 'Feeds & Anúncios',
-					items: [
-						{ label: 'Feeds XML', slug: 'features/feeds' },
-						{ label: 'Monitoramento de Plataformas', slug: 'features/platform-monitoring' },
-						{ label: 'Proteção do Feed', slug: 'features/feed-protection' },
-					],
-				},
-				{
-					label: 'Filtros & Categorias',
-					items: [
-						{ label: 'Filtros', slug: 'features/filters' },
-						{ label: 'Categorias Google', slug: 'features/google-categories' },
-					],
-				},
-				{
-					label: 'Otimização de Produtos',
-					items: [
-						{ label: 'Custom Labels', slug: 'features/custom-labels' },
-						{ label: 'Title Builder', slug: 'features/title-builder' },
-						{ label: 'Preço Dinâmico', slug: 'features/dynamic-pricing' },
-					],
-				},
-				{
-					label: 'Qualidade & Compliance',
-					items: [
-						{ label: 'Feed Quality Score', slug: 'features/compliance' },
-					],
-				},
-				{
-					label: 'Conta & Equipe',
-					items: [
-						{ label: 'Planos e Limites', slug: 'features/plan-limits' },
-						{ label: 'Equipe e Permissões', slug: 'features/team-management' },
-						{ label: 'Dados Fiscais', slug: 'features/fiscal-data' },
-					],
+					label: 'Funcionalidades',
+					autogenerate: { directory: 'features' },
 				},
 				{
 					label: 'Guias Práticos',
-					items: [
-						{ label: 'Black Friday com FeedFlow', slug: 'guides/black-friday' },
-						{ label: 'Segmentação por Preço', slug: 'guides/price-segmentation' },
-						{ label: 'Otimizar Feed Quality', slug: 'guides/optimize-feed-quality' },
-						{ label: 'Títulos para Google Shopping', slug: 'guides/google-titles' },
-						{ label: 'Alertas via Slack', slug: 'guides/slack-integration' },
-					],
+					autogenerate: { directory: 'guides' },
 				},
 				{
 					label: 'Referência',
-					items: [
-						{ label: 'FAQ', slug: 'faq' },
-						{ label: 'Troubleshooting', slug: 'troubleshooting' },
-						{ label: 'Glossário', slug: 'glossary' },
-						{ label: 'Novidades', slug: 'changelog' },
-					],
+					items: [{ slug: 'faq' }, { slug: 'troubleshooting' }, { slug: 'glossary' }, { slug: 'changelog' }],
 				},
 			],
 			components: {

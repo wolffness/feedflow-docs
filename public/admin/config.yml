@@ -21,7 +21,7 @@ locale: "pt"
 collections:
   - name: "getting-started"
     label: "Primeiros Passos"
-    folder: "src/content/docs/pt-br/getting-started"
+    folder: "src/content/docs/getting-started"
     create: true
     delete: true
     slug: "{{slug}}"
@@ -34,7 +34,7 @@ collections:
 
   - name: "platform-setup"
     label: "Plataformas"
-    folder: "src/content/docs/pt-br/platform-setup"
+    folder: "src/content/docs/platform-setup"
     create: true
     delete: true
     slug: "{{slug}}"
@@ -47,7 +47,7 @@ collections:
 
   - name: "features"
     label: "Funcionalidades"
-    folder: "src/content/docs/pt-br/features"
+    folder: "src/content/docs/features"
     create: true
     delete: true
     slug: "{{slug}}"
@@ -60,7 +60,7 @@ collections:
 
   - name: "guides"
     label: "Guias"
-    folder: "src/content/docs/pt-br/guides"
+    folder: "src/content/docs/guides"
     create: true
     delete: true
     slug: "{{slug}}"
@@ -70,3 +70,35 @@ collections:
       - { label: "Titulo", name: "title", widget: "string" }
       - { label: "Descricao", name: "description", widget: "text" }
       - { label: "Conteudo", name: "body", widget: "markdown" }
+
+  - name: "reference"
+    label: "Referência"
+    files:
+      - label: "FAQ"
+        name: "faq"
+        file: "src/content/docs/faq.mdx"
+        fields:
+          - { label: "Titulo", name: "title", widget: "string" }
+          - { label: "Descricao", name: "description", widget: "text" }
+          - { label: "Conteudo", name: "body", widget: "markdown" }
+      - label: "Troubleshooting"
+        name: "troubleshooting"
+        file: "src/content/docs/troubleshooting.mdx"
+        fields:
+          - { label: "Titulo", name: "title", widget: "string" }
+          - { label: "Descricao", name: "description", widget: "text" }
+          - { label: "Conteudo", name: "body", widget: "markdown" }
+      - label: "Glossário"
+        name: "glossary"
+        file: "src/content/docs/glossary.mdx"
+        fields:
+          - { label: "Titulo", name: "title", widget: "string" }
+          - { label: "Descricao", name: "description", widget: "text" }
+          - { label: "Conteudo", name: "body", widget: "markdown" }
+      - label: "Novidades"
+        name: "changelog"
+        file: "src/content/docs/changelog.mdx"
+        fields:
+          - { label: "Titulo", name: "title", widget: "string" }
+          - { label: "Descricao", name: "description", widget: "text" }
+          - { label: "Conteudo", name: "body", widget: "markdown" }
