@@ -93,6 +93,16 @@ export default defineConfig({
 			customCss: ['./src/styles/custom.css'],
 			head: [
 				{
+					tag: 'script',
+					content: `
+						// Force light theme as default (match feed-flow.app)
+						if (!localStorage.getItem('starlight-theme')) {
+							document.documentElement.setAttribute('data-theme', 'light');
+							localStorage.setItem('starlight-theme', 'light');
+						}
+					`,
+				},
+				{
 					tag: 'link',
 					attrs: {
 						rel: 'preconnect',

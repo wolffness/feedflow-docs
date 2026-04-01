@@ -1,6 +1,9 @@
-/* FeedFlow Design System — Starlight override */
+/* FeedFlow Design System — Starlight override
+   Tema claro como padrão, seguindo feed-flow.app */
 
-:root {
+/* ── Cores Light (padrão) ── */
+:root,
+:root[data-theme='light'] {
 	--sl-color-accent-low: #FFF8E6;
 	--sl-color-accent: #B37800;
 	--sl-color-accent-high: #805800;
@@ -12,22 +15,37 @@
 	--sl-color-gray-5: #2C2518;
 	--sl-color-gray-6: #1A1410;
 	--sl-color-black: #12100D;
+	--sl-color-bg: #FAF8F3;
+	--sl-color-bg-nav: #FAF8F3;
+	--sl-color-bg-sidebar: #FAF8F3;
+	--sl-color-hairline-light: #E8E2D9;
+	--sl-color-hairline: #E8E2D9;
+	--sl-color-text: #2C2518;
+	--sl-color-text-accent: #B37800;
 	--sl-font: 'Inter', var(--sl-font-system);
 	--sl-font-system-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
 }
 
+/* ── Cores Dark ── */
 :root[data-theme='dark'] {
-	--sl-color-accent-low: #3D2800;
+	--sl-color-accent-low: #2A1E08;
 	--sl-color-accent: #D4A050;
 	--sl-color-accent-high: #FFD699;
 	--sl-color-white: #1A1410;
-	--sl-color-gray-1: #2A2218;
+	--sl-color-gray-1: #231C14;
 	--sl-color-gray-2: #3A3228;
 	--sl-color-gray-3: #6A5E50;
 	--sl-color-gray-4: #B8B0A0;
 	--sl-color-gray-5: #E8E2D8;
 	--sl-color-gray-6: #F0EDE6;
 	--sl-color-black: #FAF8F3;
+	--sl-color-bg: #12100D;
+	--sl-color-bg-nav: #1A1410;
+	--sl-color-bg-sidebar: #1A1410;
+	--sl-color-hairline-light: #3A3228;
+	--sl-color-hairline: #3A3228;
+	--sl-color-text: #E8E2D8;
+	--sl-color-text-accent: #D4A050;
 }
 
 /* ── Logo ── */
@@ -37,19 +55,30 @@
 
 /* ── Header ── */
 header.header {
-	border-bottom: 1px solid var(--sl-color-gray-2);
-	background: var(--sl-color-white);
+	border-bottom: 1px solid var(--sl-color-hairline);
+	background: var(--sl-color-bg-nav);
 }
 
 /* ── Sidebar ── */
 nav.sidebar {
-	border-inline-end: 1px solid var(--sl-color-gray-2);
+	border-inline-end: 1px solid var(--sl-color-hairline);
 }
 
 .sidebar-content a[aria-current='page'] {
 	background: var(--sl-color-accent-low);
 	color: var(--sl-color-accent);
 	font-weight: 600;
+	border-radius: 0.375rem;
+}
+
+/* Sidebar group labels */
+.sidebar-content .top-level > li > details > summary,
+.sidebar-content .top-level > li > a {
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 0.75rem;
+	letter-spacing: 0.05em;
+	color: var(--sl-color-gray-3);
 }
 
 /* ── Content typography ── */
@@ -63,20 +92,34 @@ nav.sidebar {
 .sl-markdown-content h3 {
 	letter-spacing: -0.02em;
 	font-weight: 700;
+	color: var(--sl-color-text);
 }
 
 .sl-markdown-content h2 {
 	margin-top: 2.5rem;
 	padding-top: 1.5rem;
-	border-top: 1px solid var(--sl-color-gray-2);
+	border-top: 1px solid var(--sl-color-hairline);
 }
 
-.sl-markdown-content p {
+.sl-markdown-content p,
+.sl-markdown-content li {
 	color: var(--sl-color-gray-4);
 }
 
-:root[data-theme='dark'] .sl-markdown-content p {
+:root[data-theme='dark'] .sl-markdown-content p,
+:root[data-theme='dark'] .sl-markdown-content li {
 	color: var(--sl-color-gray-5);
+}
+
+/* ── Links ── */
+.sl-markdown-content a {
+	color: var(--sl-color-accent);
+	text-decoration-color: var(--sl-color-accent-low);
+	text-underline-offset: 0.15em;
+}
+
+.sl-markdown-content a:hover {
+	text-decoration-color: var(--sl-color-accent);
 }
 
 /* ── Blockquotes ── */
@@ -121,12 +164,49 @@ nav.sidebar {
 }
 
 /* ── Table of contents ── */
-.right-sidebar starlight-toc a[aria-current='true'] {
+starlight-toc a[aria-current='true'] {
 	color: var(--sl-color-accent);
 	font-weight: 600;
 }
 
 /* ── Footer ── */
 footer.footer {
-	border-top: 1px solid var(--sl-color-gray-2);
+	border-top: 1px solid var(--sl-color-hairline);
+}
+
+/* ── Search ── */
+.search-input {
+	border-color: var(--sl-color-gray-2);
+}
+
+/* ── CTA button (SocialIcons override) ── */
+.sl-cta-btn {
+	background: var(--sl-color-accent) !important;
+	color: #fff !important;
+	padding: 0.4rem 1rem;
+	border-radius: 9999px;
+	font-size: 0.85rem;
+	font-weight: 600;
+	white-space: nowrap;
+	text-decoration: none;
+	transition: background 0.2s;
+}
+
+.sl-cta-btn:hover {
+	background: var(--sl-color-accent-high) !important;
+}
+
+/* ── Steps component ── */
+.sl-steps > li::before {
+	background: var(--sl-color-accent) !important;
+}
+
+/* ── Pagination ── */
+.pagination-links a {
+	border-color: var(--sl-color-gray-2);
+	border-radius: 0.5rem;
+}
+
+.pagination-links a:hover {
+	border-color: var(--sl-color-accent);
 }
