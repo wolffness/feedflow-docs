@@ -1,0 +1,133 @@
+---
+title: Alertas via Slack
+description: Configure notificacoes em tempo real no seu canal do Slack.
+---
+
+import { Aside, Steps, Card, CardGrid } from '@astrojs/starlight/components';
+
+## O que e
+
+A integracao com Slack permite receber **alertas de feed em tempo real** diretamente no canal da sua equipe. Quando algo der errado com seus feeds — uma falha na geracao, um feed desatualizado ou um limite de plano atingido — voce fica sabendo na hora, sem precisar abrir o painel do FeedFlow.
+
+<Aside type="note">
+A integracao com Slack esta disponivel nos planos **Pro** e superiores.
+</Aside>
+
+## Por que usar
+
+- **Email pode ser ignorado** — alertas criticos se perdem entre newsletters e spam
+- **Slack e onde sua equipe ja esta** — a notificacao aparece no fluxo de trabalho normal
+- **Tempo de resposta** — quanto mais rapido voce souber de um problema no feed, menos vendas perde
+
+## Como configurar
+
+<Steps>
+
+1. **No Slack: crie um app com Incoming Webhook**
+
+   Acesse [api.slack.com/apps](https://api.slack.com/apps) e clique em **Create New App > From scratch**. Dê um nome (ex: "FeedFlow Alertas") e selecione o workspace da sua empresa.
+
+   Em seguida, va em **Incoming Webhooks**, ative o recurso e clique em **Add New Webhook to Workspace**. Escolha o canal onde deseja receber os alertas (ex: `#feedflow-alertas`).
+
+   Copie a **Webhook URL** gerada. Ela se parece com:
+   ```
+   https://hooks.slack.com/services/SEU/WEBHOOK/AQUI
+   ```
+
+2. **No FeedFlow: cole a URL do webhook**
+
+   No painel do FeedFlow, acesse **Protecao > Integracoes > Slack**. Cole a URL do webhook no campo indicado.
+
+3. **Clique em "Testar Slack"**
+
+   O FeedFlow envia uma mensagem de teste para o canal configurado. Verifique se a mensagem chegou.
+
+4. **Recebeu a mensagem? Pronto!**
+
+   A integracao esta ativa. A partir de agora, voce recebera alertas automaticos sempre que algo relevante acontecer com seus feeds.
+
+</Steps>
+
+## Tipos de alerta que voce recebe
+
+<CardGrid>
+  <Card title="Feed com falha" icon="error">
+    Enviado quando a geracao de um feed falha por qualquer motivo (erro de conexao com a Nuvemshop, timeout, erro interno).
+
+    **Acao:** verifique o painel do FeedFlow e force uma nova geracao. Se o erro persistir, entre em contato com o suporte.
+  </Card>
+
+  <Card title="Feed desatualizado" icon="warning">
+    Enviado quando um feed nao e atualizado dentro do intervalo esperado (ex: deveria atualizar a cada 6 horas, mas ja se passaram 12).
+
+    **Acao:** verifique se a Nuvemshop esta acessivel e se nao ha problemas de sincronizacao.
+  </Card>
+
+  <Card title="Protecao acionada" icon="shield">
+    Enviado quando o threshold de protecao e acionado — ou seja, o feed teve uma variacao brusca de produtos (ex: mais de 30% dos produtos sumiram).
+
+    **Acao:** verifique se a mudanca e esperada (ex: produtos esgotados na Black Friday) ou se e um erro. Se for esperado, ajuste o threshold temporariamente.
+  </Card>
+
+  <Card title="Limite do plano" icon="information">
+    Enviado quando voce esta se aproximando do limite de produtos ou feeds do seu plano atual.
+
+    **Acao:** considere fazer upgrade ou otimizar seu catalogo removendo produtos inativos.
+  </Card>
+</CardGrid>
+
+## Dica: crie um canal dedicado
+
+Recomendamos criar um canal exclusivo no Slack para alertas do FeedFlow, como `#feedflow-alertas`. Isso evita que as notificacoes se misturem com conversas da equipe e facilita o acompanhamento.
+
+Se voce gerencia multiplas lojas, pode criar um canal por loja:
+- `#feedflow-loja-principal`
+- `#feedflow-loja-outlet`
+
+## Teste periodico
+
+Webhooks do Slack podem parar de funcionar se o app for removido, o canal for arquivado ou as permissoes mudarem.
+
+<Aside type="tip">
+A cada 30 dias, acesse **Protecao > Integracoes > Slack** e clique em "Testar Slack" para confirmar que tudo continua funcionando. E rapido e evita surpresas.
+</Aside>
+
+## Troubleshooting
+
+### "Nao recebi a mensagem de teste"
+
+<Steps>
+
+1. **Verifique a URL do webhook**
+
+   Copie a URL novamente do Slack e cole no FeedFlow. URLs com espacos ou caracteres extras nao funcionam.
+
+2. **Verifique as permissoes do app**
+
+   No Slack, va em **Settings > Manage Apps** e confirme que o app "FeedFlow Alertas" (ou o nome que voce deu) ainda esta instalado e ativo.
+
+3. **Verifique o canal**
+
+   Confirme que o canal configurado no webhook ainda existe e nao foi arquivado. Se o canal foi renomeado, o webhook continua funcionando (ele e vinculado ao ID do canal, nao ao nome).
+
+4. **Verifique sua conexao**
+
+   Em casos raros, firewalls corporativos podem bloquear webhooks. Se voce esta em uma rede corporativa, consulte seu time de TI.
+
+5. **Recrie o webhook**
+
+   Se nenhuma das opcoes acima resolver, delete o webhook antigo no Slack e crie um novo. Cole a nova URL no FeedFlow e teste novamente.
+
+</Steps>
+
+### "Recebia alertas mas pararam de chegar"
+
+Isso geralmente acontece quando:
+
+- O app do Slack foi removido do workspace — reinstale
+- O token do webhook expirou — crie um novo webhook
+- O canal foi deletado — crie um novo canal e um novo webhook
+
+### "Recebo alertas demais"
+
+Se voce esta recebendo muitos alertas, revise suas configuracoes de protecao. Um threshold muito baixo (ex: 5%) pode acionar alertas para variacoes normais do catalogo. Considere aumentar para 15-20% em periodos normais.

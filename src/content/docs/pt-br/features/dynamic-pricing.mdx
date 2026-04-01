@@ -1,0 +1,114 @@
+---
+title: Preço Dinâmico
+description: Configure preços diferentes por plataforma de anúncios e por categoria de produto.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+O Preço Dinâmico permite ajustar o preço dos seus produtos no feed de forma automática, aplicando markups ou markdowns por plataforma de anúncios e por categoria de produto. Isso significa que o mesmo produto pode ter preços diferentes no Google Shopping, Meta Ads e TikTok — sem alterar nada na sua loja.
+
+## Por que isso importa
+
+Cada plataforma de anúncios tem um custo por clique (CPC) diferente e atrai compradores com comportamentos distintos:
+
+- **Google Shopping** — CPC mais alto, comprador com intenção de compra forte. Precisa de margem maior para compensar o custo do clique.
+- **Meta Ads** — CPC mais baixo, comprador mais impulsivo. Preços agressivos geram volume.
+- **TikTok Ads** — público jovem, sensível a preço. Descontos pequenos fazem diferença.
+- **Pinterest** — comprador aspiracional, disposto a pagar mais por produtos de nicho.
+
+Se você anuncia o mesmo preço em todas as plataformas, está deixando dinheiro na mesa em pelo menos uma delas.
+
+## Como funciona
+
+O Preço Dinâmico combina dois níveis de ajuste:
+
+- **Ajuste por categoria** — markup ou markdown percentual aplicado a todos os produtos de uma categoria
+- **Ajuste por plataforma** — markup ou markdown percentual aplicado ao feed de uma plataforma específica
+
+### Ajuste composto
+
+Quando os dois ajustes estão ativos, eles se multiplicam (não se somam):
+
+**Preço final = Preço original × (1 + ajuste categoria) × (1 + ajuste plataforma)**
+
+Exemplo prático: uma camiseta custa **R$100** na loja.
+
+- Ajuste da categoria "Camisetas": **+15%**
+- Ajuste da plataforma Meta: **-5%**
+- Cálculo: R$100 × 1.15 × 0.95 = **R$109,25**
+- Resultado: o preço no feed do Meta será R$109,25 (aumento efetivo de 9,25%)
+
+<Aside type="tip">
+O ajuste composto evita surpresas. Se você aplicar +15% na categoria e -5% na plataforma, o resultado é +9,25% — não +10%. Isso é intencional para manter a consistência matemática.
+</Aside>
+
+### Exemplo de negócio
+
+Imagine que você vende eletrônicos e roupas:
+
+- **Camiseta de R$100 na loja:**
+  - No Meta: anunciar por **R$90** (markdown de -10%) — margem menor para gerar volume
+  - No Google: anunciar por **R$110** (markup de +10%) — CPC alto, precisa compensar
+- **Fone de ouvido de R$250 na loja:**
+  - No Meta: anunciar por **R$250** (sem ajuste) — preço competitivo naturalmente
+  - No Google: anunciar por **R$275** (markup de +10%) — comprador já decidiu, aceita pagar mais
+
+## Limites
+
+- Markdown máximo: **-50%** (você não pode vender por menos da metade do preço original)
+- Markup máximo: **+100%** (você não pode mais que dobrar o preço)
+- **0% não é permitido** como valor de ajuste — se não quer ajustar, deixe o campo vazio ou desativado
+
+<Aside type="caution">
+Ajustes muito agressivos podem fazer seus anúncios serem reprovados. O Google Shopping, por exemplo, compara o preço do feed com o preço na página do produto. Diferenças grandes geram reprovação.
+</Aside>
+
+## Onde encontrar
+
+O Preço Dinâmico fica na aba **Preços** dentro do detalhe de cada feed.
+
+## Como configurar
+
+<Steps>
+1. Acesse **Feeds** e clique no feed que deseja configurar.
+
+2. Vá até a aba **Preços**.
+
+3. Na seção **Ajuste por categoria**, clique em **Adicionar regra**.
+
+4. Selecione a **categoria** e defina o **percentual** (positivo para markup, negativo para markdown).
+
+5. Na seção **Ajuste por plataforma**, defina o percentual para cada plataforma ativa.
+
+6. Confira o **preview de preços** — o FeedFlow mostra exemplos de produtos com o preço original e o preço ajustado.
+
+7. Salve as configurações. Os novos preços serão aplicados na próxima sincronização do feed.
+</Steps>
+
+## Casos de uso
+
+### Loja de eletrônicos com margens apertadas no Google
+
+Problema: o CPC no Google Shopping para eletrônicos é alto (R$1,50-3,00 por clique). Com margem de 15%, cada venda precisa converter bem para dar lucro.
+
+Solução:
+- Markup de **+8%** na categoria "Eletrônicos" para o feed do Google
+- Sem ajuste para o Meta (margem natural já funciona com CPC mais baixo)
+- Markdown de **-5%** no TikTok para atrair público jovem sensível a preço
+
+Resultado: o Google compensa o CPC alto, o Meta mantém o volume, e o TikTok gera vendas incrementais.
+
+### Loja de moda com promoções agressivas no Meta
+
+Problema: no Meta, anúncios com preços baixos performam melhor (CTR mais alto, CPA mais baixo). Mas no Google, o comprador já está pesquisando e aceita pagar o preço cheio.
+
+Solução:
+- Markdown de **-10%** na categoria "Vestidos" para o feed do Meta
+- Markup de **+5%** na mesma categoria para o feed do Google
+- Sem ajuste para Pinterest (público aspiracional, preço cheio funciona)
+
+Resultado: mais volume no Meta com margem menor, e margem protegida no Google e Pinterest.
+
+## Disponibilidade
+
+O Preço Dinâmico está disponível nos planos **Premium** e superiores.

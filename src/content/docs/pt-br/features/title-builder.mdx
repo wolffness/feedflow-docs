@@ -1,0 +1,130 @@
+---
+title: Title Builder
+description: Construa títulos dinâmicos por plataforma com o editor visual drag-and-drop.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+O Title Builder é um editor visual para criar templates de título personalizados por plataforma de anúncios. Você monta o título arrastando blocos de variáveis, e o FeedFlow aplica o template automaticamente a todos os produtos do feed.
+
+## Por que o título importa tanto
+
+O título é o campo mais importante do seu feed. É ele que determina:
+
+- **Se o produto aparece** — no Google Shopping, o título é o principal fator para matching de busca
+- **Se o comprador clica** — em todas as plataformas, o título é a primeira coisa que o olho lê
+- **Se o anúncio é aprovado** — títulos genéricos ou com informações faltantes são reprovados com frequência
+
+O problema é que cada plataforma valoriza informações diferentes:
+
+- **Google** quer keywords e especificações técnicas
+- **Meta** quer algo visual e direto (o comprador está scrollando rápido)
+- **TikTok** quer algo casual e trending
+- **Pinterest** quer contexto de uso e inspiração
+
+Usar o mesmo título em todas as plataformas é desperdiçar potencial de cada canal.
+
+## Variáveis disponíveis
+
+Cada bloco do editor representa uma variável do produto:
+
+- `{product_name}` — nome do produto como está na loja
+- `{brand}` — marca do produto
+- `{color}` — cor da variação
+- `{size}` — tamanho da variação
+- `{price}` — preço efetivo (menor entre normal e promocional)
+- `{category}` — categoria principal do produto
+- `{material}` — material/composição do produto
+
+Você pode combinar variáveis livremente e adicionar texto fixo entre elas (como separadores, preposições, etc.).
+
+## Templates recomendados por plataforma
+
+### Google Shopping
+
+**Fórmula:** Marca + Tipo + Atributo + Cor + Tamanho
+
+Exemplo: "Nike Tênis de Corrida Air Max Preto 42"
+
+O Google usa até **150 caracteres**, mas os **primeiros 70 são os mais importantes** — é o que aparece nos resultados. Coloque a informação mais relevante no início.
+
+<Aside type="tip">
+No Google, títulos com marca e atributos específicos (cor, tamanho, modelo) têm CTR até 40% maior que títulos genéricos. Priorize keywords que o comprador buscaria.
+</Aside>
+
+### Meta Ads
+
+**Fórmula:** Nome + Cor
+
+Exemplo: "Vestido Midi Floral Verde"
+
+No Meta, apenas os **primeiros 30-40 caracteres** ficam visíveis no card do anúncio. Seja direto e visual — o comprador está scrollando o feed e decide em milissegundos.
+
+### TikTok Ads
+
+**Fórmula:** Nome + Marca
+
+Exemplo: "Tênis Air Max Nike"
+
+No TikTok, o público é jovem e o formato é rápido. Títulos curtos e com marcas reconhecíveis performam melhor.
+
+### Pinterest
+
+**Fórmula:** Nome + Contexto de Uso
+
+Exemplo: "Vestido Midi Floral para Casamento ao Ar Livre"
+
+No Pinterest, o comprador está buscando inspiração. Adicionar o contexto de uso ("para casamento", "para escritório", "para treino") aumenta significativamente o engajamento.
+
+## Preview em tempo real
+
+Ao montar o template, o editor mostra um preview de como o título ficará para cada produto, em cada plataforma. Você pode:
+
+- Ver o título completo e o título truncado (como aparece na plataforma)
+- Navegar entre produtos de exemplo para validar o resultado
+- Identificar títulos que ficaram muito longos ou muito curtos
+
+## Como configurar
+
+<Steps>
+1. Acesse **Feeds** e clique no feed que deseja configurar.
+
+2. Vá até a aba **Títulos**.
+
+3. Selecione a **plataforma** para a qual quer criar o template (Google, Meta, TikTok, Pinterest).
+
+4. Arraste os **blocos de variáveis** para a área de construção na ordem desejada.
+
+5. Adicione **texto fixo** entre variáveis se necessário (separadores, preposições).
+
+6. Confira o **preview** com produtos reais da sua loja.
+
+7. Repita para cada plataforma que desejar personalizar.
+
+8. Salve. Os novos títulos serão aplicados na próxima sincronização.
+</Steps>
+
+<Aside type="caution">
+Se uma variável estiver vazia para um produto (ex: produto sem marca cadastrada), o bloco é omitido automaticamente. O FeedFlow também remove espaços duplos que ficariam no lugar.
+</Aside>
+
+## Caso de uso: loja de roupas femininas otimizando para cada canal
+
+**Produto:** Vestido Midi Floral Estampado — Marca Amaro — Cor Verde — Tamanho M — R$189,90
+
+Títulos gerados:
+
+- **Google:** "Amaro Vestido Midi Floral Estampado Verde M" (keyword-rich, 43 caracteres)
+- **Meta:** "Vestido Midi Floral Verde" (visual, 25 caracteres)
+- **TikTok:** "Vestido Midi Floral Amaro" (marca + produto, 25 caracteres)
+- **Pinterest:** "Vestido Midi Floral para Festas de Verão" (inspiracional, com texto fixo adicionado)
+
+Resultado: o mesmo produto comunica de forma diferente em cada canal, maximizando o CTR onde importa.
+
+<Aside type="tip">
+Comece pelo Google — é a plataforma mais exigente com títulos. Depois adapte para as demais, removendo variáveis e simplificando.
+</Aside>
+
+## Disponibilidade
+
+O Title Builder está disponível nos planos **Pro** e superiores.

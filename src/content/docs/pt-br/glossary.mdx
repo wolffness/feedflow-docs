@@ -1,0 +1,60 @@
+---
+title: Glossário
+description: Termos e conceitos usados no FeedFlow e no universo de feeds de produtos.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Referência rápida dos termos mais usados no FeedFlow e no ecossistema de feeds de produtos para e-commerce.
+
+<Aside type="tip">
+Use `Ctrl+F` (ou `Cmd+F` no Mac) para buscar um termo específico nesta página.
+</Aside>
+
+---
+
+**Catalog Ads** — Anúncios de catálogo que usam o feed de produtos para gerar anúncios automaticamente. Disponíveis no Meta Ads, Google Shopping, TikTok e Pinterest.
+
+**CPC** — Custo Por Clique. Quanto você paga cada vez que alguém clica no seu anúncio. Feeds com dados mais completos tendem a ter CPC menor.
+
+**CTR** — Taxa de Cliques (Click-Through Rate). Percentual de pessoas que veem seu anúncio e clicam. Títulos otimizados e imagens de qualidade aumentam o CTR.
+
+**Custom Label** — Campo personalizado no feed (`custom_label_0` a `custom_label_4`) usado para segmentar campanhas. Ex: "Lançamento", "Premium", "Black Friday".
+
+**Dynamic Ads** — Sinônimo de Catalog Ads no Meta. Anúncios gerados automaticamente a partir do feed de produtos, exibidos para usuários com base no comportamento de navegação.
+
+**EAN / GTIN** — Código de barras do produto (EAN-13 no Brasil, com 13 dígitos). Obrigatório para Google Shopping e recomendado para Meta. Permite que as plataformas identifiquem o produto de forma única.
+
+**Feed Quality Score** — Pontuação de 0 a 100 que avalia a qualidade dos dados no seu feed. Score alto significa mais impressões e menor CPC. O FeedFlow calcula automaticamente e indica o que melhorar.
+
+**Feed XML** — Arquivo estruturado em formato XML com dados dos produtos (nome, preço, imagem, estoque, etc.). Lido periodicamente pelas plataformas de anúncios para manter o catálogo atualizado.
+
+**Google Product Category (GPC)** — Taxonomia oficial do Google com 6.000+ categorias hierárquicas. Usado no campo `google_product_category` do feed. O FeedFlow sugere a categoria mais adequada automaticamente.
+
+**Grade Furada** — Percentual de variações de um produto que estão sem estoque. Ex: camiseta com 5 tamanhos e 3 esgotados = 60% de grade furada. Produtos com grade furada alta podem prejudicar a experiência do comprador.
+
+**Item Group ID** — Campo que agrupa variações do mesmo produto (cor, tamanho). Permite que as plataformas de anúncios exibam todas as variantes juntas em um mesmo anúncio.
+
+**Merchant Center** — Painel do Google onde você gerencia seus feeds de produtos para Google Shopping. É onde o feed gerado pelo FeedFlow é cadastrado.
+
+**MPN** — Número de peça do fabricante (Manufacturer Part Number). Alternativa ao GTIN para produtos sem código de barras, como artesanais ou fabricação própria.
+
+**Performance Max** — Tipo de campanha do Google que usa IA para distribuir anúncios em todos os canais Google (Shopping, Search, Display, YouTube). Requer um feed de produtos ativo no Merchant Center.
+
+**Product Type** — Campo do feed com a categorização interna da sua loja. Diferente do Google Product Category, é definido por você. Ex: "Roupas > Feminino > Vestidos".
+
+**Rich Pins** — Pins no Pinterest que mostram informações do produto (preço, disponibilidade) automaticamente a partir do feed. Atualizam sozinhos quando o feed muda.
+
+**ROAS** — Retorno sobre Investimento em Anúncios (Return on Ad Spend). Ex: ROAS 5 significa que para cada R$ 1 investido, retornaram R$ 5 em vendas.
+
+**RSS/XML** — Formato do feed de produtos usado pelo FeedFlow. Compatível com todas as principais plataformas de anúncios (Google, Meta, TikTok, Pinterest).
+
+**SKU** — Código interno do produto na loja, definido pelo lojista. Usado como identificador quando o GTIN não está disponível.
+
+**Supplemental Feed** — Feed auxiliar que complementa o feed principal com dados extras, como promoções sazonais ou custom labels. Cadastrado separadamente no Merchant Center.
+
+**Title Builder** — Editor visual do FeedFlow para criar templates de título dinâmicos por plataforma. Permite montar títulos como `{Marca} {Produto} {Cor} - {Tamanho}` sem editar produto por produto.
+
+**User-Agent** — Identificação que cada plataforma usa ao buscar seu feed (ex: `Googlebot`, `facebookexternalhit`). O FeedFlow detecta automaticamente e pode servir feeds otimizados por plataforma.
+
+**Variação** — Versão de um produto com atributo diferente (cor, tamanho, voltagem). Cada variação é um item separado no feed, com seu próprio preço, estoque e imagem.

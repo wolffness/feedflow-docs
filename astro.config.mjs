@@ -18,22 +18,74 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: 'Começando',
-					autogenerate: { directory: 'pt-br/getting-started' },
+					items: [
+						{ label: 'Visão Geral', slug: 'getting-started' },
+						{ label: 'Quick Start', slug: 'getting-started/quick-start' },
+						{ label: 'Conceitos Principais', slug: 'getting-started/core-concepts' },
+					],
 				},
 				{
 					label: 'Plataformas',
-					autogenerate: { directory: 'pt-br/platform-setup' },
+					items: [
+						{ label: 'Nuvemshop', slug: 'platform-setup/nuvemshop' },
+					],
 				},
 				{
-					label: 'Funcionalidades',
-					autogenerate: { directory: 'pt-br/features' },
+					label: 'Feeds & Anúncios',
+					items: [
+						{ label: 'Feeds XML', slug: 'features/feeds' },
+						{ label: 'Monitoramento de Plataformas', slug: 'features/platform-monitoring' },
+						{ label: 'Proteção do Feed', slug: 'features/feed-protection' },
+					],
 				},
 				{
-					label: 'Guias',
-					autogenerate: { directory: 'pt-br/guides' },
+					label: 'Filtros & Categorias',
+					items: [
+						{ label: 'Filtros', slug: 'features/filters' },
+						{ label: 'Categorias Google', slug: 'features/google-categories' },
+					],
 				},
-				{ label: 'FAQ', link: '/pt-br/faq/' },
-				{ label: 'Novidades', link: '/pt-br/changelog/' },
+				{
+					label: 'Otimização de Produtos',
+					items: [
+						{ label: 'Custom Labels', slug: 'features/custom-labels' },
+						{ label: 'Title Builder', slug: 'features/title-builder' },
+						{ label: 'Preço Dinâmico', slug: 'features/dynamic-pricing' },
+					],
+				},
+				{
+					label: 'Qualidade & Compliance',
+					items: [
+						{ label: 'Feed Quality Score', slug: 'features/compliance' },
+					],
+				},
+				{
+					label: 'Conta & Equipe',
+					items: [
+						{ label: 'Planos e Limites', slug: 'features/plan-limits' },
+						{ label: 'Equipe e Permissões', slug: 'features/team-management' },
+						{ label: 'Dados Fiscais', slug: 'features/fiscal-data' },
+					],
+				},
+				{
+					label: 'Guias Práticos',
+					items: [
+						{ label: 'Black Friday com FeedFlow', slug: 'guides/black-friday' },
+						{ label: 'Segmentação por Preço', slug: 'guides/price-segmentation' },
+						{ label: 'Otimizar Feed Quality', slug: 'guides/optimize-feed-quality' },
+						{ label: 'Títulos para Google Shopping', slug: 'guides/google-titles' },
+						{ label: 'Alertas via Slack', slug: 'guides/slack-integration' },
+					],
+				},
+				{
+					label: 'Referência',
+					items: [
+						{ label: 'FAQ', slug: 'faq' },
+						{ label: 'Troubleshooting', slug: 'troubleshooting' },
+						{ label: 'Glossário', slug: 'glossary' },
+						{ label: 'Novidades', slug: 'changelog' },
+					],
+				},
 			],
 			components: {
 				SocialIcons: './src/components/SocialIcons.astro',

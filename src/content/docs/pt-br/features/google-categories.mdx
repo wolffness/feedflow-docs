@@ -1,0 +1,119 @@
+---
+title: Categorias Google
+description: Mapeie as categorias da sua loja para a taxonomia oficial do Google e melhore a segmentação dos anúncios.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+O Google Shopping exige que cada produto tenha uma **Google Product Category** — uma categoria da taxonomia oficial do Google, com mais de 6.000 opções organizadas em hierarquia. O FeedFlow faz a ponte entre as categorias da sua loja na Nuvemshop e essa taxonomia, garantindo que seus anúncios sejam aprovados e bem segmentados.
+
+## Por que isso importa?
+
+Quando o Google recebe seu feed, ele usa a categoria para decidir **para quem** mostrar o anúncio. Se a categoria está errada ou ausente:
+
+- O anúncio pode ser **rejeitado** pelo Google Merchant Center
+- A segmentação fica imprecisa — seu produto aparece para o público errado
+- Você paga mais por cliques que não convertem
+
+Com a categoria correta, o Google entende exatamente o que você vende e mostra para quem está procurando.
+
+## Como funciona a hierarquia
+
+A taxonomia do Google funciona como uma árvore. Cada nível é mais específico:
+
+**Vestuário e Acessórios > Roupas > Vestidos > Vestidos Midi**
+
+Quanto mais específico você for, melhor o Google entende seu produto. Não mapeie apenas "Vestuário e Acessórios" se você vende vestidos midi — vá até o nível mais profundo possível.
+
+## Conceito de vertical
+
+Ao configurar o FeedFlow pela primeira vez, você escolhe a **vertical** da sua loja — a categoria raiz que representa seu segmento principal. Exemplos:
+
+- Loja de roupas → **Vestuário e Acessórios**
+- Pet shop → **Animais e Acessórios para Pets**
+- Eletrônicos → **Eletrônicos**
+- Casa e decoração → **Casa e Jardim**
+
+A vertical ajuda o FeedFlow a filtrar sugestões e acelerar o mapeamento, mostrando primeiro as categorias mais relevantes para o seu tipo de loja.
+
+## Mapeamento manual
+
+<Steps>
+
+1. Acesse **Categorias Google** no menu lateral do FeedFlow
+2. Você verá a lista de categorias da sua loja (importadas da Nuvemshop)
+3. Clique no campo de mapeamento ao lado de uma categoria
+4. Comece a digitar — o autocomplete mostra categorias do Google que correspondem à sua busca
+5. Selecione a categoria mais específica possível
+6. Repita para todas as categorias da sua loja
+
+</Steps>
+
+<Aside type="tip">
+Use o autocomplete a seu favor. Ao digitar "camiseta", o FeedFlow já mostra "Vestuário e Acessórios > Roupas > Camisetas" como sugestão.
+</Aside>
+
+## Sugestão com IA (Premium+)
+
+No plano Premium e superiores, o FeedFlow usa inteligência artificial para sugerir automaticamente a melhor categoria do Google para cada categoria da sua loja. A IA analisa o nome da categoria, os produtos que ela contém e o contexto da sua vertical.
+
+<Steps>
+
+1. Acesse **Categorias Google** no menu lateral
+2. Identifique as categorias ainda não mapeadas (marcadas como "Sem mapeamento")
+3. Clique em **Sugerir com IA** ao lado de uma categoria individual, ou clique em **Sugerir todas com IA** para aplicar sugestões em massa para todas as categorias não mapeadas
+4. Revise cada sugestão — a IA acerta na grande maioria, mas você conhece seus produtos melhor
+5. Confirme ou ajuste as sugestões
+
+</Steps>
+
+<Aside type="note">
+**"Sugerir todas com IA"** processa todas as categorias não mapeadas de uma vez. Se sua loja tem 40 categorias internas, o FeedFlow mapeia todas em poucos minutos — um trabalho que levaria horas manualmente.
+</Aside>
+
+## Exemplos práticos
+
+Veja como o FeedFlow traduz categorias da sua loja para o Google:
+
+- **"Camisetas"** → Vestuário e Acessórios > Roupas > Camisetas
+- **"Ração para Cães"** → Animais e Acessórios para Pets > Alimentos para Animais > Alimentos para Cães
+- **"Capinhas de Celular"** → Eletrônicos > Acessórios para Comunicação e Eletrônicos > Acessórios para Celulares > Capas para Celulares
+- **"Sofás"** → Casa e Jardim > Móveis > Sofás
+
+## O que acontece no feed XML
+
+Quando você mapeia uma categoria, o FeedFlow inclui o campo `google_product_category` no feed XML de cada produto. Ele pode aparecer de duas formas:
+
+- **ID numérico:** `<g:google_product_category>2271</g:google_product_category>`
+- **Caminho completo:** `<g:google_product_category>Vestuário e Acessórios > Roupas > Camisetas</g:google_product_category>`
+
+O FeedFlow usa o ID numérico por padrão, que é o formato preferido pelo Google.
+
+## Caso de uso real
+
+Uma loja de moda com **40 categorias internas** na Nuvemshop usou a função "Sugerir todas com IA". Em menos de 5 minutos, todas as categorias estavam mapeadas. A lojista revisou as sugestões, ajustou 3 que estavam genéricas demais, e pronto — o feed passou a ter 100% de cobertura de categorias Google.
+
+Resultado: os anúncios que antes eram rejeitados por "categoria ausente" passaram a ser aprovados, e o CPC médio caiu porque a segmentação ficou mais precisa.
+
+## Troubleshooting
+
+**"Meu anúncio foi rejeitado por categoria errada"**
+
+<Steps>
+
+1. Acesse o Google Merchant Center e identifique qual produto foi rejeitado
+2. No FeedFlow, vá em **Categorias Google** e encontre a categoria interna desse produto
+3. Verifique se o mapeamento está correto — a categoria precisa descrever o produto, não a loja
+4. Se necessário, ajuste para uma categoria mais específica
+5. Aguarde a próxima atualização do feed (ou force uma regeneração) para que a mudança seja enviada ao Google
+
+</Steps>
+
+<Aside type="caution">
+Evite mapear tudo para uma categoria genérica como "Vestuário e Acessórios". O Google penaliza feeds com categorias muito amplas — sempre escolha o nível mais específico disponível.
+</Aside>
+
+## Disponibilidade por plano
+
+- **Lite, Pro, Premium, Enterprise** — mapeamento manual com busca autocomplete
+- **Premium e Enterprise** — sugestão com IA (individual e em massa)

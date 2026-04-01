@@ -1,0 +1,145 @@
+---
+title: Black Friday com FeedFlow
+description: Prepare seus feeds para a Black Friday e maximize suas vendas com segmentação inteligente.
+---
+
+import { Aside, Steps, Card, CardGrid } from '@astrojs/starlight/components';
+
+A Black Friday é o maior evento de vendas do ano no e-commerce brasileiro. Milhões de consumidores comparam preços simultaneamente nas plataformas de anúncios, e o feed que estiver mais completo, atualizado e bem segmentado vai ganhar mais visibilidade. Este guia mostra como preparar tudo com antecedência para que, no dia, você só precise monitorar os resultados.
+
+## 2 semanas antes: checklist de preparação
+
+<Steps>
+
+1. **Verifique seu Feed Quality Score**
+
+   Acesse o painel do FeedFlow e confira o score de cada feed. O ideal é estar acima de **90 pontos** antes da Black Friday. Se estiver abaixo, consulte o guia [Como Atingir Feed Quality Score 90+](/pt-br/guides/optimize-feed-quality) e corrija os erros pendentes.
+
+2. **Mapeie todas as categorias Google**
+
+   Produtos sem categoria Google mapeada são rejeitados ou perdem visibilidade. Vá em **Categorias Google** e garanta que 100% dos seus produtos estejam mapeados corretamente.
+
+3. **Configure a proteção do feed com threshold mais alto**
+
+   Durante a Black Friday, o catálogo muda rapidamente (produtos esgotam, preços mudam). Aumente o threshold de proteção para **50%** para evitar que o feed seja bloqueado por variações bruscas de catálogo. Vá em **Proteção > Threshold** e ajuste.
+
+4. **Crie custom labels para segmentação**
+
+   Labels são a arma secreta da Black Friday. Eles permitem criar campanhas separadas por tipo de oferta, desconto e estoque. Veja a seção abaixo para o setup completo.
+
+5. **Configure alertas no Slack**
+
+   No dia da Black Friday você não pode perder tempo checando email. Configure o [Slack](/pt-br/guides/slack-integration) para receber alertas instantâneos se algo der errado com o feed.
+
+</Steps>
+
+## Custom Labels para Black Friday
+
+A estratégia de labels permite segmentar seus produtos em campanhas diferentes, com lances e orçamentos otimizados para cada grupo.
+
+<CardGrid>
+  <Card title="Label 0: Black Friday" icon="rocket">
+    **Tipo:** Estático
+
+    Valor: `Black Friday`
+
+    Aplique em todos os produtos que estão em promoção. Isso permite criar uma campanha exclusiva para itens da Black Friday, separada do catálogo regular.
+  </Card>
+
+  <Card title="Label 1: Faixa de Desconto" icon="percentage">
+    **Tipo:** Faixa de Desconto
+
+    Faixas sugeridas:
+    - `10-30%` — descontos moderados
+    - `30-50%` — descontos agressivos
+    - `50%+` — ofertas arrasadoras
+
+    Permite definir lances maiores para descontos maiores (que convertem melhor).
+  </Card>
+
+  <Card title="Label 2: Faixa de Preço" icon="shopping-cart">
+    **Tipo:** Faixa de Preço
+
+    Faixas sugeridas:
+    - `Ate R$50` — impulso, ticket baixo
+    - `R$50-200` — intermediario
+    - `Acima de R$200` — ticket alto, ROAS maior
+
+    Separa campanhas para que produtos caros recebam lances proporcionais ao retorno esperado.
+  </Card>
+
+  <Card title="Label 3: Estoque" icon="archive">
+    **Tipo:** Faixa de Estoque
+
+    Faixas sugeridas:
+    - `Estoque Alto` — acima de 50 unidades
+    - `Estoque Medio` — 10 a 50 unidades
+    - `Ultimas unidades` — abaixo de 10
+
+    Evita gastar verba anunciando produtos que vão esgotar em minutos. Priorize estoque alto para maximizar receita.
+  </Card>
+</CardGrid>
+
+## Filtros recomendados
+
+Antes da Black Friday, revise os filtros do seu feed para garantir qualidade:
+
+- **Excluir produtos sem estoque** — evita cliques desperdicados em produtos indisponiveis
+- **Excluir produtos sem imagem** — anuncios sem imagem sao rejeitados pelas plataformas
+- **Excluir produtos com preco zerado** — indica erro de cadastro e pode causar rejeicao em massa
+
+Configure esses filtros em **Feed > Filtros** no painel do FeedFlow.
+
+## Preco dinamico por canal (Premium)
+
+Se voce esta no plano Premium, aproveite o recurso de **preco dinamico por canal**. Na Black Friday, voce pode:
+
+- Aplicar margem diferente para Google Shopping e Meta Ads
+- Ajustar precos em tempo real conforme a concorrencia
+- Definir precos especificos para cada plataforma sem alterar a Nuvemshop
+
+Isso e especialmente util quando o mesmo produto compete em canais diferentes com CPCs distintos.
+
+## No dia da Black Friday
+
+<Steps>
+
+1. **Monitore as plataformas**
+
+   Acesse o painel do FeedFlow e verifique se todos os feeds estao sendo gerados no horario correto. Confira o status de cada plataforma (Google, Meta, Pinterest, TikTok).
+
+2. **Fique atento aos alertas**
+
+   Com o Slack configurado, voce recebera alertas instantaneos se algum feed falhar ou se o threshold de protecao for acionado.
+
+3. **Verifique o estoque periodicamente**
+
+   Produtos esgotados devem sair do feed rapidamente. O FeedFlow faz isso automaticamente se o filtro de estoque estiver ativo, mas vale conferir.
+
+4. **Nao mexa nos feeds durante o pico**
+
+   Evite alterar configuracoes de feed entre 00h e 06h da Black Friday. Qualquer mudanca pode gerar um ciclo de processamento e deixar o feed temporariamente indisponivel.
+
+</Steps>
+
+## Pos-Black Friday
+
+<Steps>
+
+1. **Remova o label estatico "Black Friday"**
+
+   Desative o custom label 0 para que os produtos voltem ao fluxo normal de campanhas.
+
+2. **Ajuste o threshold de protecao**
+
+   Reduza o threshold de volta ao padrao (normalmente 20-30%). O catalogo vai se estabilizar e voce nao quer que variacoes normais passem despercebidas.
+
+3. **Analise os resultados**
+
+   Compare o desempenho por faixa de desconto, faixa de preco e nivel de estoque. Esses dados vao orientar sua estrategia para o Natal e proximas datas sazonais.
+
+</Steps>
+
+<Aside type="tip">
+Comece a preparar 2 semanas antes. Labels podem ser criados antecipadamente e ficam inativos ate o dia. No momento certo, basta ativar e suas campanhas ja estarao segmentadas.
+</Aside>

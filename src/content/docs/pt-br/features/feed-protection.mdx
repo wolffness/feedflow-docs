@@ -1,0 +1,166 @@
+---
+title: Proteção do Feed
+description: Configure alertas automáticos para quedas e aumentos anormais de produtos no seu feed.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+A Proteção do Feed monitora automaticamente variações anormais no número de produtos do seu feed. Se algo sai do esperado — seja uma queda brusca ou um aumento inexplicável — o FeedFlow age antes que o problema afete seus anúncios.
+
+## Por que isso importa
+
+Feeds de produtos são a ponte entre sua loja e as plataformas de anúncios. Quando essa ponte quebra, as consequências são imediatas:
+
+- **Integração quebrada** — seus anúncios param de rodar porque os produtos sumiram do feed
+- **Duplicação de produtos** — um bug na importação dobra o catálogo, e você gasta o dobro em anúncios sem perceber
+- **Perda silenciosa** — sem monitoramento, você só descobre o problema dias depois, quando o ROAS já despencou
+
+## Dois tipos de proteção
+
+### Proteção contra queda (Drop Protection)
+
+Detecta quando o número de produtos cai além do limite configurado. O padrão é **30%**, mas você pode ajustar.
+
+Exemplo: seu feed tem 500 produtos. Se na próxima sincronização caírem para 300 (queda de 40%), a proteção é acionada.
+
+### Proteção contra aumento anormal (Spike Protection)
+
+Detecta quando o número de produtos sobe além do limite configurado. O padrão é **50%**.
+
+Exemplo: seu feed tem 500 produtos e, de repente, sobe para 800 (aumento de 60%). Isso pode indicar duplicação na integração.
+
+<Aside type="caution">
+Quedas e aumentos anormais quase sempre indicam problemas na integração com a plataforma de e-commerce, não mudanças reais no catálogo. Investigue antes de desativar a proteção.
+</Aside>
+
+## Como configurar
+
+<Steps>
+1. Acesse **Feeds** e clique no feed que deseja proteger.
+
+2. Vá até a aba **Proteção**.
+
+3. Ative o toggle de **Proteção contra queda** e/ou **Proteção contra aumento**.
+
+4. Defina o **threshold (%)** — a porcentagem de variação que aciona o alerta. Valores menores são mais sensíveis.
+
+5. Escolha a **ação** quando o limite for ultrapassado:
+   - **Bloquear** — o feed não é atualizado até que você revise manualmente
+   - **Notificar** — o feed é atualizado normalmente, mas você recebe um alerta
+   - **Bloquear + Notificar** — combinação das duas ações
+
+6. Configure os **canais de notificação** (veja abaixo).
+
+7. Salve as configurações.
+</Steps>
+
+## Canais de notificação
+
+Você pode receber alertas por múltiplos canais simultaneamente:
+
+- **Email** — enviado para o email da conta e para membros da equipe com permissão
+- **Slack webhook** — mensagem direta no canal que você configurar
+- **Membros da equipe** — cada membro com acesso ao feed recebe a notificação individualmente
+
+<Aside type="tip">
+Para agências que gerenciam múltiplas lojas, o Slack é o canal mais eficiente. Configure um canal por cliente ou um canal central de alertas.
+</Aside>
+
+### Como testar o Slack
+
+Após colar a URL do webhook:
+
+<Steps>
+1. Clique em **Testar webhook**.
+
+2. Uma mensagem de teste será enviada para o canal configurado.
+
+3. Verifique no Slack se a mensagem chegou.
+
+4. Se não chegou, confira se a URL está correta e se o app do Slack tem permissão para postar no canal.
+</Steps>
+
+## Tipos de alerta
+
+O FeedFlow envia alertas para diferentes situações:
+
+- **Feed falhou** — a sincronização não completou (erro de conexão, timeout, etc.)
+- **Feed desatualizado** — a última sincronização foi há mais tempo do que o esperado
+- **Limite do plano** — você está se aproximando do limite de produtos do seu plano
+- **Queda detectada** — o número de produtos caiu além do threshold
+- **Aumento detectado** — o número de produtos subiu além do threshold
+- **Loja desconectada** — a integração com a Nuvemshop perdeu a conexão
+
+## Casos de uso
+
+### Agência com múltiplas lojas
+
+Cenário: você gerencia 15 lojas de clientes diferentes. Não dá para checar cada feed manualmente todo dia.
+
+Configuração recomendada:
+- Threshold de queda: **20%** (mais sensível — melhor pecar pelo excesso de alerta)
+- Threshold de aumento: **40%**
+- Ação: **Bloquear + Notificar**
+- Canal: Slack com canal `#feedflow-alertas`
+
+### Loja de moda com alta rotatividade
+
+Cenário: loja com 2.000 SKUs que renova coleção toda semana. É normal 200-300 produtos saírem e entrarem.
+
+Configuração recomendada:
+- Threshold de queda: **40%** (mais relaxado para acomodar a rotatividade natural)
+- Threshold de aumento: **60%**
+- Ação: **Notificar** (sem bloquear, porque a variação é esperada)
+- Canal: Email para o responsável pelo catálogo
+
+### Integração instável
+
+Cenário: a integração com a plataforma apresenta falhas intermitentes. Às vezes o feed vem com metade dos produtos.
+
+Configuração recomendada:
+- Threshold de queda: **25%**
+- Ação: **Bloquear + Notificar** (nunca deixar um feed incompleto ir para o ar)
+- Canal: Slack + Email
+
+<Aside type="tip">
+Se a integração falha com frequência, entre em contato com o suporte para investigar a causa raiz. A proteção é uma rede de segurança, não uma solução permanente.
+</Aside>
+
+## Troubleshooting
+
+### "Slack não funciona"
+
+- Verifique se a URL do webhook está correta (deve começar com `https://hooks.slack.com/`)
+- Confirme que o app do Slack tem permissão para postar no canal
+- Use o botão **Testar webhook** para validar
+- Se mudou o canal no Slack, você precisa gerar um novo webhook
+
+### "Feed bloqueado, como desbloqueio?"
+
+Quando a proteção bloqueia o feed, você verá um banner na página do feed:
+
+<Steps>
+1. Revise o motivo do bloqueio (queda ou aumento anormal).
+
+2. Verifique na sua loja se os produtos realmente mudaram ou se foi um erro de sincronização.
+
+3. Se tudo estiver correto, clique em **Aprovar e atualizar** para liberar o feed com os novos dados.
+
+4. Se foi um erro, clique em **Manter feed anterior** para ignorar a sincronização problemática.
+</Steps>
+
+### "Alerta de queda mas não vejo produtos faltando"
+
+Isso pode acontecer quando:
+
+- Produtos ficaram inativos temporariamente na plataforma e voltaram antes de você verificar
+- O threshold está muito sensível para o volume da sua loja — considere aumentar o percentual
+- Houve uma falha parcial na sincronização que se corrigiu na tentativa seguinte
+
+<Aside type="caution">
+Mesmo que o alerta pareça falso, investigue. Falhas intermitentes podem indicar um problema maior que vai se agravar.
+</Aside>
+
+## Disponibilidade
+
+A Proteção do Feed está disponível nos planos **Pro** e superiores.

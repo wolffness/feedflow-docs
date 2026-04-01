@@ -1,0 +1,94 @@
+---
+title: Monitoramento de Plataformas
+description: Veja quais plataformas estão consumindo seu feed em tempo real.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+O Monitoramento de Plataformas detecta automaticamente quais plataformas de anúncios estão buscando seu feed. Você sabe, em tempo real, se o Google Shopping, Meta Ads, TikTok ou Pinterest estão consumindo seus dados — ou se algo parou de funcionar.
+
+## Como funciona
+
+Toda vez que uma plataforma busca seu feed, ela se identifica por um **User-Agent** na requisição HTTP. O FeedFlow reconhece os User-Agents das principais plataformas:
+
+- **Google** — Googlebot, Google-Shopping
+- **Meta** — Facebookexternalhit, Meta-ExternalAgent
+- **TikTok** — TikTok-Catalog
+- **Pinterest** — Pinterest
+
+Com base nisso, o FeedFlow registra cada acesso e mostra no dashboard quando cada plataforma buscou o feed pela última vez.
+
+## Três status
+
+### Em Uso
+
+A plataforma está buscando o feed regularmente. Você verá o timestamp da última busca.
+
+Exemplo: "Google Shopping — Última busca: há 4 horas"
+
+### Aguardando
+
+A URL do feed foi gerada, mas nenhuma plataforma buscou ainda. Isso é normal logo após criar o feed — a plataforma pode levar de minutos a horas para fazer a primeira busca.
+
+### Desativado
+
+O feed para essa plataforma não está ativo ou a URL não foi cadastrada em nenhuma plataforma de anúncios.
+
+<Aside type="tip">
+O status "Em Uso" é a confirmação de que sua integração está funcionando. Se você cadastrou a URL na plataforma e o status continua "Aguardando" após 24 horas, algo está errado.
+</Aside>
+
+## No dashboard
+
+Para cada feed, o dashboard mostra:
+
+- Nome da plataforma detectada
+- Status atual (Em Uso, Aguardando, Desativado)
+- Timestamp da última busca
+- Frequência média de busca (ex: "a cada 6 horas")
+
+## Feed URLs por plataforma
+
+Cada plataforma tem sua URL própria, otimizada para o formato que ela espera:
+
+- `catalog.xml` — feed genérico (compatível com qualquer plataforma)
+- `google.xml` — otimizado para Google Shopping (campos g:id, g:price, etc.)
+- `meta.xml` — otimizado para Meta Ads (campos de compliance)
+- `tiktok.xml` — otimizado para TikTok Catalog
+- `pinterest.xml` — otimizado para Pinterest Product Pins
+
+<Aside type="caution">
+Use sempre a URL específica da plataforma. O feed genérico funciona, mas os feeds específicos incluem campos obrigatórios e formatações que evitam reprovação de produtos.
+</Aside>
+
+## O que fazer quando "Aguardando" há muito tempo
+
+Se o status permanece "Aguardando" por mais de 24 horas após cadastrar a URL:
+
+<Steps>
+1. **Verifique a URL** — copie a URL do feed no FeedFlow e compare com a que está cadastrada no painel de anúncios. Um caractere diferente é suficiente para falhar.
+
+2. **Acesse a URL no navegador** — cole a URL do feed na barra de endereço. Se retornar XML, o feed está funcionando. Se der erro, o problema é no FeedFlow.
+
+3. **Verifique a autenticação** — se o feed usa Basic Auth, confirme que o usuário e senha estão corretos no painel de anúncios.
+
+4. **Cheque o painel da plataforma** — Meta e Google mostram logs de tentativa de busca. Procure por erros de conexão ou autenticação.
+
+5. **Aguarde o ciclo da plataforma** — algumas plataformas buscam a cada 24-48 horas. Se tudo parece correto, espere mais um ciclo.
+</Steps>
+
+## Autenticação opcional
+
+Para feeds que contêm informações sensíveis (preços exclusivos, estoque interno), você pode ativar **Basic Auth**:
+
+- Defina um **usuário** e **senha** nas configurações do feed
+- Cadastre as credenciais no painel da plataforma de anúncios
+- Apenas requisições autenticadas terão acesso ao feed
+
+<Aside type="tip">
+O Google Shopping e o Meta Ads suportam Basic Auth nativamente. Configure direto no painel de cada plataforma ao cadastrar a URL do feed.
+</Aside>
+
+## Disponibilidade
+
+O Monitoramento de Plataformas está disponível em **todos os planos**.

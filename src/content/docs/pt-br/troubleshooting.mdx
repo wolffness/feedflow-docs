@@ -1,0 +1,157 @@
+---
+title: Troubleshooting
+description: Soluções para os problemas mais comuns ao usar o FeedFlow.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Encontre abaixo as soluções para os problemas mais relatados pelos usuários do FeedFlow. Se o seu problema não estiver listado, entre em contato pelo chat de suporte.
+
+## Conexão e Sincronização
+
+### Meus produtos não aparecem no dashboard
+
+<Steps>
+1. Verifique se a loja está conectada em **Plataformas** — o status deve ser "Conectada".
+2. Aguarde a sincronização inicial completar. Na primeira conexão, pode levar até **5 minutos** dependendo do número de produtos.
+3. Confirme que os produtos estão **publicados** na Nuvemshop. Produtos em rascunho ou ocultos não são importados.
+</Steps>
+
+<Aside type="tip">
+Se a loja acabou de ser conectada, atualize a página após alguns minutos. A primeira sincronização roda em segundo plano.
+</Aside>
+
+### Produtos estão desatualizados (preço errado, estoque errado)
+
+O FeedFlow mantém seus dados atualizados de duas formas:
+
+- **Webhooks em tempo real** — qualquer alteração na Nuvemshop (preço, estoque, título) é refletida automaticamente.
+- **Sync completo diário** às 3h da manhã (horário de Brasília) como rede de segurança.
+
+Se mesmo assim os dados parecem desatualizados:
+
+<Steps>
+1. Vá ao **Dashboard** e clique no botão **"Ressincronizar"** para forçar uma sincronização manual.
+2. Verifique o intervalo de atualização do seu plano:
+   - **Básico**: a cada 6 horas
+   - **Pro**: a cada 2 horas
+   - **Premium**: a cada 1 hora
+3. Confirme que o preço/estoque está correto na própria Nuvemshop — o FeedFlow reflete fielmente o que está na loja.
+</Steps>
+
+### Aparece "Loja desconectada"
+
+<Steps>
+1. Vá em **Plataformas** > **Reconectar Nuvemshop** e refaça a autorização.
+2. Se persistir, verifique na Nuvemshop se o app FeedFlow ainda está instalado (Nuvemshop > Meus aplicativos).
+3. Se o app foi desinstalado por engano, reinstale-o. Seus dados são mantidos por **30 dias** após a desconexão.
+</Steps>
+
+<Aside type="caution">
+Após 30 dias sem reconexão, os dados da loja são removidos permanentemente por questões de privacidade.
+</Aside>
+
+---
+
+## Feed e Plataformas de Anúncios
+
+### Google Merchant Center rejeitou meu feed
+
+<Steps>
+1. Acesse o **Feed Quality Score** no painel do FeedFlow — ele identifica exatamente quais campos estão com problema.
+2. Corrija os erros mais comuns:
+   - **GTIN ausente** — preencha o código de barras (EAN-13) dos produtos. É obrigatório para o Google Shopping.
+   - **Categoria errada** — use a taxonomia Google Product Category correta. O FeedFlow sugere automaticamente.
+   - **Preço divergente** — o preço no feed precisa ser idêntico ao preço na página do produto. Verifique promoções ou cupons que possam causar divergência.
+3. Após corrigir, aguarde o Google re-buscar o feed (geralmente em até 6 horas) ou force a busca no Merchant Center.
+</Steps>
+
+<Aside type="note">
+O Google Merchant Center oferece um relatório detalhado de diagnóstico em **Produtos > Diagnóstico**. Use-o em conjunto com o Feed Quality Score do FeedFlow.
+</Aside>
+
+### Meta Commerce Manager mostra erros
+
+<Steps>
+1. Verifique se as **imagens** dos produtos têm no mínimo **500x500 pixels**. Imagens menores são rejeitadas pelo Meta.
+2. Confirme que o campo de disponibilidade está em inglês (`in stock` / `out of stock`). O FeedFlow já normaliza isso automaticamente.
+3. Verifique se o feed está atualizado — vá ao Dashboard e confira a data da última geração.
+</Steps>
+
+<Aside type="tip">
+Se o Meta mostra erro de "item não encontrado", verifique se o `id` do produto não foi alterado. Trocar o ID faz o Meta tratar como um produto novo.
+</Aside>
+
+### Feed mostra 0 produtos
+
+<Steps>
+1. Verifique seus **filtros ativos** — é comum que filtros muito restritivos acabem excluindo todos os produtos.
+2. Confirme que a loja tem produtos **publicados** na Nuvemshop.
+3. Verifique se o plano não está cancelado ou expirado — planos inativos não geram feeds.
+</Steps>
+
+### Plataforma aparece como "Aguardando" há muito tempo
+
+Cada plataforma tem seu próprio ritmo para buscar o feed pela primeira vez:
+
+- **Google Merchant Center**: geralmente busca em até **6 horas** após o cadastro da URL.
+- **Meta Commerce Manager**: pode demorar até **24 horas** para a primeira busca.
+- **Pinterest / TikTok**: entre 6 e 12 horas.
+
+<Steps>
+1. Verifique se a **URL do feed** está correta no painel da plataforma de anúncios.
+2. Tente forçar a busca manualmente no painel da plataforma (quando disponível).
+3. Se já passaram 24h e o status não mudou, entre em contato com o suporte.
+</Steps>
+
+---
+
+## Conta e Plano
+
+### Atingi o limite de produtos
+
+Quando o número de produtos da loja ultrapassa o limite do plano, os produtos excedentes **não entram no feed**.
+
+<Steps>
+1. O FeedFlow prioriza os produtos **mais recentes** — os mais antigos ficam de fora.
+2. Use **filtros** para selecionar quais produtos devem entrar no feed (ex: apenas produtos com estoque, apenas uma categoria).
+3. Para incluir todos os produtos, faça **upgrade de plano** em Conta > Plano.
+</Steps>
+
+<Aside type="note">
+Os produtos que ficam de fora do feed continuam sincronizados — eles entram automaticamente se você fizer upgrade ou remover outros produtos.
+</Aside>
+
+### Não consigo acessar uma funcionalidade
+
+<Steps>
+1. Verifique sua **role** na conta — usuários com role **Viewer** têm acesso somente leitura e não podem editar feeds ou filtros.
+2. Verifique se o seu **plano** inclui a funcionalidade desejada. Exemplo: Compliance e regras avançadas são exclusivas do plano **Premium**.
+3. Se você é Owner e mesmo assim não consegue acessar, tente sair e entrar novamente.
+</Steps>
+
+### Meu trial expirou
+
+<Steps>
+1. Faça upgrade em **Conta > Plano** — escolha o plano que melhor se encaixa na sua operação.
+2. Seus dados são **preservados por 30 dias** após a expiração do trial. Nenhum dado é perdido imediatamente.
+3. Se não fizer upgrade dentro de 30 dias, membros não-owner são revogados e os dados são removidos.
+</Steps>
+
+<Aside type="caution">
+Durante o período de expiração, seus feeds param de ser atualizados. As plataformas de anúncios podem pausar seus anúncios automaticamente por dados desatualizados.
+</Aside>
+
+---
+
+## Performance
+
+### Feed demora muito para gerar
+
+- Para lojas com até **5.000 produtos**, a geração leva segundos.
+- Para lojas com **10.000+ produtos**, pode levar até **2 minutos** — isso é normal.
+- Se o tempo de geração parece excessivo, verifique se há **muitas regras de filtro** ativas. Cada regra adiciona processamento.
+
+<Aside type="tip">
+A geração do feed roda em segundo plano. Você pode continuar usando o dashboard normalmente enquanto o feed é processado.
+</Aside>

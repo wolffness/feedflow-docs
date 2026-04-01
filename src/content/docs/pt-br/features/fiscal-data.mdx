@@ -1,0 +1,95 @@
+---
+title: Dados Fiscais
+description: Configure seus dados fiscais para emissão automática de NFS-e.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+O FeedFlow é um serviço de software (SaaS) e, por legislação brasileira, precisa emitir **Nota Fiscal de Serviço Eletrônica (NFS-e)** para cada cobrança. Para que a nota saia corretamente no nome da sua empresa, você precisa cadastrar seus dados fiscais.
+
+## Por que preciso preencher?
+
+A emissão de NFS-e é obrigatória por lei para serviços de software no Brasil. Sem os dados fiscais cadastrados:
+
+- Você não recebe a nota fiscal da assinatura
+- Sua empresa não consegue usar o FeedFlow como despesa dedutível
+- O FeedFlow emite a nota com dados genéricos, o que pode causar problemas contábeis
+
+## Dados necessários
+
+Para emitir a NFS-e corretamente, o FeedFlow precisa de:
+
+- **CPF ou CNPJ** — documento do titular ou da empresa
+- **Razão Social** — nome oficial como consta no cadastro da Receita Federal
+- **Logradouro** — rua, avenida, etc.
+- **Número** — número do endereço
+- **Complemento** — sala, andar, bloco (opcional)
+- **Bairro**
+- **Cidade**
+- **UF** — estado (sigla com 2 letras)
+- **CEP**
+- **Inscrição Municipal** — se sua empresa tiver (opcional para MEI)
+- **Email fiscal** — endereço de email onde a nota será enviada
+
+<Aside type="tip">
+Use o email do setor financeiro ou contabilidade da sua empresa no campo "Email fiscal". Assim a nota vai direto para quem precisa, sem depender do dono da loja repassar.
+</Aside>
+
+## Como preencher
+
+<Steps>
+
+1. Acesse **FeedFlow > Conta > Dados Fiscais**
+2. Preencha todos os campos obrigatórios (marcados com asterisco)
+3. Revise os dados — confira especialmente o CNPJ e a Razão Social
+4. Clique em **Salvar dados fiscais**
+5. Pronto — a partir da próxima cobrança, a NFS-e será emitida com esses dados
+
+</Steps>
+
+## Emissão automática
+
+O FeedFlow gera a NFS-e **automaticamente** a cada ciclo de cobrança:
+
+- **Plano mensal:** a nota é emitida no dia do vencimento de cada mês
+- **Plano anual:** a nota é emitida no dia da cobrança anual
+
+Você não precisa solicitar a nota — ela é gerada e enviada automaticamente.
+
+## Como receber a nota
+
+A NFS-e é enviada por email para o endereço cadastrado no campo **Email fiscal**. O email contém:
+
+- A nota em formato **PDF** anexada
+- Dados do serviço (FeedFlow — serviço de geração de feed XML)
+- Valor, período de referência e dados do prestador
+
+<Aside type="note">
+Se você não recebeu a nota, verifique a caixa de spam. Caso o problema persista, entre em contato pelo suporte.
+</Aside>
+
+## Alteração de dados
+
+Você pode alterar os dados fiscais **a qualquer momento**:
+
+<Steps>
+
+1. Acesse **FeedFlow > Conta > Dados Fiscais**
+2. Edite os campos que precisam de atualização
+3. Clique em **Salvar dados fiscais**
+
+</Steps>
+
+A alteração vale a partir da **próxima emissão**. Notas já emitidas não são afetadas — se precisar corrigir uma nota já emitida, entre em contato com o suporte.
+
+<Aside type="caution">
+Se sua empresa mudou de CNPJ (por exemplo, de MEI para ME), atualize os dados fiscais antes da próxima cobrança para evitar nota emitida com o CNPJ antigo.
+</Aside>
+
+## Disponibilidade
+
+Os dados fiscais estão disponíveis em **todos os planos** — Lite, Pro, Premium e Enterprise. A emissão de NFS-e é automática para todas as assinaturas ativas.
+
+## Onde encontrar
+
+**FeedFlow > Conta > Dados Fiscais** — para cadastrar ou alterar seus dados para emissão de nota fiscal.

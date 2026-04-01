@@ -1,0 +1,130 @@
+---
+title: Equipe e Permissões
+description: Convide membros para sua equipe e defina o que cada um pode fazer.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+O FeedFlow permite que múltiplas pessoas acessem a mesma conta com diferentes níveis de permissão. Assim, o dono da loja mantém controle total enquanto delega tarefas para a equipe.
+
+## Papéis disponíveis
+
+### Owner (Proprietário)
+
+Acesso total à conta. Apenas um por loja — é quem criou a conta no FeedFlow.
+
+- Gerencia plano e faturamento
+- Convida e remove membros
+- Configura dados fiscais
+- Acessa todas as funcionalidades sem restrição
+
+### Admin (Administrador)
+
+Gerencia a operação do dia a dia, sem acesso ao faturamento.
+
+- Convida e remove membros (exceto o Owner)
+- Configura feeds, filtros e custom labels
+- Gerencia categorias Google
+- Acessa o dashboard completo
+
+### Member (Membro)
+
+Executa as tarefas operacionais.
+
+- Edita filtros e custom labels
+- Mapeia categorias Google
+- Visualiza o dashboard e relatórios
+- Não pode convidar ou remover membros
+- Não pode alterar configurações da conta
+
+### Viewer (Visualizador)
+
+Apenas consulta — ideal para gestores que precisam acompanhar sem mexer.
+
+- Visualiza dashboard, feeds e relatórios
+- Não pode editar nada
+- Não pode criar ou alterar feeds, filtros ou labels
+
+## Papéis por plano
+
+**Lite (2 usuários)**
+- Owner + Member
+- Ideal para loja com dono e um assistente
+
+**Pro (5 usuários)**
+- Owner + Admin + Member
+- Para equipes pequenas que precisam delegar administração
+
+**Premium (15 usuários)**
+- Todos os 4 papéis (Owner, Admin, Member, Viewer)
+- Para operações maiores com múltiplos perfis de acesso
+
+**Enterprise (ilimitado)**
+- Todos os papéis + custom roles
+- Para agências e grandes operações com permissões personalizadas
+
+## Como convidar um membro
+
+<Steps>
+
+1. Acesse **FeedFlow > Conta > Equipe**
+2. Clique em **Convidar membro**
+3. Informe o email da pessoa
+4. Escolha o papel (role) — as opções disponíveis dependem do seu plano
+5. Clique em **Enviar convite**
+6. A pessoa recebe um email com link para aceitar e criar acesso
+
+</Steps>
+
+<Aside type="note">
+Os convites pendentes expiram em **7 dias**. Se a pessoa não aceitar nesse prazo, você pode reenviar o convite na mesma tela.
+</Aside>
+
+## Como revogar acesso
+
+<Steps>
+
+1. Acesse **FeedFlow > Conta > Equipe**
+2. Encontre o membro na lista
+3. Clique no menu de opções (tres pontos) ao lado do nome
+4. Selecione **Remover membro**
+5. Confirme a remoção — o acesso é revogado imediatamente
+
+</Steps>
+
+<Aside type="caution">
+Ao remover um membro, todas as sessões ativas dessa pessoa são encerradas. Ela perde acesso na hora — não tem período de carencia.
+</Aside>
+
+## Limite de membros
+
+O limite inclui **todos os membros ativos + convites pendentes**. Se você está no plano Pro (5 usuários) e já tem 4 membros + 1 convite pendente, precisa aguardar o convite expirar ou cancelá-lo antes de enviar outro.
+
+Para aumentar o limite, faça upgrade do plano em **FeedFlow > Conta > Plano**.
+
+## Casos de uso
+
+### Loja com dono + assistente (Lite)
+
+O dono da loja (Owner) configura os feeds e o plano. O assistente (Member) faz o trabalho operacional: mapeia categorias, ajusta filtros e monitora o feed. Dois usuários, sem complicação.
+
+### Equipe de marketing + gestão (Pro)
+
+O dono (Owner) cuida do faturamento. O gerente de marketing (Admin) configura feeds e convida os analistas. Os analistas (Member) trabalham nos filtros e custom labels no dia a dia.
+
+### Agência gerenciando clientes (Enterprise)
+
+A agência usa custom roles para criar perfis sob medida: um "Gerente de Conta" que vê tudo mas não mexe no faturamento, um "Analista de Feed" que edita apenas filtros, e um "Cliente" que só visualiza relatórios. Com membros ilimitados, a agência escala sem se preocupar com limites.
+
+## O que acontece ao cancelar a assinatura
+
+Quando a assinatura é cancelada ou expira:
+
+- Todos os membros que **não são Owner** perdem o acesso automaticamente
+- Apenas o Owner mantém acesso à conta (em modo somente leitura)
+- Se a assinatura for reativada, os membros precisam ser reconvidados
+- Nenhum dado é deletado — tudo fica preservado para quando a conta voltar
+
+## Onde encontrar
+
+**FeedFlow > Conta > Equipe** — para gerenciar membros, convites e papéis.
