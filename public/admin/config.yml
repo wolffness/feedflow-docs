@@ -9,8 +9,8 @@ site_url: https://docs.feed-flow.app
 display_url: https://docs.feed-flow.app
 logo_url: https://feed-flow.app/static/img/logo-feedflow-dark.svg
 
-media_folder: "src/assets/images"
-public_folder: "/src/assets/images"
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
 
 slug:
   encoding: "unicode"
