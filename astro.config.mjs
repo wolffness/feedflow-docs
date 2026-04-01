@@ -11,9 +11,9 @@ export default defineConfig({
 				src: './src/assets/logo-icon.svg',
 				alt: 'FeedFlow',
 			},
-			defaultLocale: 'pt-br',
+			defaultLocale: 'root',
 			locales: {
-				'pt-br': { label: 'Português', lang: 'pt-BR' },
+				root: { label: 'Português', lang: 'pt-BR' },
 			},
 			sidebar: [
 				{
@@ -89,19 +89,10 @@ export default defineConfig({
 			],
 			components: {
 				SocialIcons: './src/components/SocialIcons.astro',
+				ThemeProvider: './src/components/ThemeProvider.astro',
 			},
 			customCss: ['./src/styles/custom.css'],
 			head: [
-				{
-					tag: 'script',
-					content: `
-						// Force light theme as default (match feed-flow.app)
-						if (!localStorage.getItem('starlight-theme')) {
-							document.documentElement.setAttribute('data-theme', 'light');
-							localStorage.setItem('starlight-theme', 'light');
-						}
-					`,
-				},
 				{
 					tag: 'link',
 					attrs: {

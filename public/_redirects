@@ -1,1 +1,2 @@
-/ /pt-br/getting-started/ 302
+/ /getting-started/ 302
+/pt-br/* /:splat 301
