@@ -1,107 +1,107 @@
 ---
 title: Como Atingir Feed Quality Score 90+
-description: Corrija os erros mais comuns e aumente a visibilidade dos seus anuncios.
+description: Corrija os erros mais comuns e aumente a visibilidade dos seus anúncios.
 ---
 
 import { Aside, Steps, Card, CardGrid } from '@astrojs/starlight/components';
 
-## O que e Feed Quality Score
+## O que é Feed Quality Score
 
-O Feed Quality Score e uma pontuacao de **0 a 100** que o FeedFlow calcula para cada feed, por plataforma. Ele leva em conta tres fatores:
+O Feed Quality Score é uma pontuação de **0 a 100** que o FeedFlow calcula para cada feed, por plataforma. Ele leva em conta três fatores:
 
-- **Erros criticos** — campos obrigatorios ausentes ou invalidos (peso alto na pontuacao)
-- **Avisos** — campos recomendados ausentes ou fora do padrao (peso medio)
-- **Boas praticas** — titulo otimizado, descricao completa, imagem de qualidade (peso baixo, mas acumula)
+- **Erros críticos** — campos obrigatórios ausentes ou inválidos (peso alto na pontuação)
+- **Avisos** — campos recomendados ausentes ou fora do padrão (peso médio)
+- **Boas práticas** — título otimizado, descrição completa, imagem de qualidade (peso baixo, mas acumula)
 
-Cada plataforma (Google Shopping, Meta Ads, Pinterest, TikTok) tem regras diferentes, entao o score pode variar entre feeds do mesmo catalogo.
+Cada plataforma (Google Shopping, Meta Ads, Pinterest, TikTok) tem regras diferentes, então o score pode variar entre feeds do mesmo catálogo.
 
 ## Por que importa
 
 Um score alto impacta diretamente seus resultados:
 
-- **Mais impressoes** — plataformas priorizam anuncios com dados completos
-- **Menor CPC** — feeds de qualidade recebem leiloes mais baratos
-- **Menos rejeicoes** — produtos aprovados de primeira, sem necessidade de correcao manual
-- **Mais conversoes** — titulos e descricoes melhores geram mais cliques qualificados
+- **Mais impressões** — plataformas priorizam anúncios com dados completos
+- **Menor CPC** — feeds de qualidade recebem leilões mais baratos
+- **Menos rejeições** — produtos aprovados de primeira, sem necessidade de correção manual
+- **Mais conversões** — títulos e descrições melhores geram mais cliques qualificados
 
 <Aside type="caution">
-GTIN e o erro mais impactante no Google Shopping. Sem GTIN, seu produto perde ate **20% das impressoes** em comparacao com concorrentes que informam o codigo de barras.
+GTIN é o erro mais impactante no Google Shopping. Sem GTIN, seu produto perde até **20% das impressões** em comparação com concorrentes que informam o código de barras.
 </Aside>
 
 ## Top 5 erros mais comuns em lojas brasileiras
 
-### 1. Descricao com HTML
+### 1. Descrição com HTML
 
-**O problema:** A Nuvemshop exporta descricoes com tags HTML (`<p>`, `<br>`, `<strong>`). As plataformas de anuncio rejeitam ou exibem o HTML cru no anuncio.
+**O problema:** A Nuvemshop exporta descrições com tags HTML (`<p>`, `<br>`, `<strong>`). As plataformas de anúncio rejeitam ou exibem o HTML cru no anúncio.
 
-**A solucao:** O FeedFlow limpa o HTML automaticamente no processamento de compliance. Verifique se o compliance esta ativo para o seu feed.
+**A solução:** O FeedFlow limpa o HTML automaticamente no processamento de compliance. Verifique se o compliance está ativo para o seu feed.
 
 <Steps>
 
-1. Acesse **Feed > Configuracoes**
-2. Verifique se **Compliance automatico** esta ativado
-3. Se estava desativado, ative e force uma nova geracao do feed
+1. Acesse **Feed > Configurações**
+2. Verifique se **Compliance automático** está ativado
+3. Se estava desativado, ative e force uma nova geração do feed
 
 </Steps>
 
-### 2. GTIN/EAN ausente ou invalido
+### 2. GTIN/EAN ausente ou inválido
 
-**O problema:** A maioria das lojas brasileiras nao preenche o codigo de barras (GTIN/EAN) dos produtos na Nuvemshop. O Google Shopping usa o GTIN para identificar o produto e posiciona-lo no leilao correto.
+**O problema:** A maioria das lojas brasileiras não preenche o código de barras (GTIN/EAN) dos produtos na Nuvemshop. O Google Shopping usa o GTIN para identificar o produto e posicioná-lo no leilão correto.
 
-**A solucao:** Existem dois caminhos:
+**A solução:** Existem dois caminhos:
 
 <Steps>
 
-1. **Caminho ideal:** preencha o GTIN na Nuvemshop, no campo "Codigo de barras" de cada variante. O FeedFlow importa automaticamente.
-2. **Caminho pragmatico:** se nao tiver o GTIN, o FeedFlow define `identifier_exists = false` no feed. Voce perde ate 20% das impressoes, mas o produto nao e rejeitado.
+1. **Caminho ideal:** preencha o GTIN na Nuvemshop, no campo "Código de barras" de cada variante. O FeedFlow importa automaticamente.
+2. **Caminho pragmático:** se não tiver o GTIN, o FeedFlow define `identifier_exists = false` no feed. Você perde até 20% das impressões, mas o produto não é rejeitado.
 
 </Steps>
 
 <Aside type="tip">
-Para preencher GTINs em lote, exporte seus produtos da Nuvemshop em CSV, preencha a coluna de codigo de barras e reimporte. O FeedFlow vai capturar na proxima sincronizacao.
+Para preencher GTINs em lote, exporte seus produtos da Nuvemshop em CSV, preencha a coluna de código de barras e reimporte. O FeedFlow vai capturar na próxima sincronização.
 </Aside>
 
-### 3. Titulo generico
+### 3. Título genérico
 
-**O problema:** Titulos como "Camiseta P" ou "Tenis Preto" nao informam o suficiente para o Google posicionar o produto corretamente. Resultado: menos impressoes e cliques pouco qualificados.
+**O problema:** Títulos como "Camiseta P" ou "Tênis Preto" não informam o suficiente para o Google posicionar o produto corretamente. Resultado: menos impressões e cliques pouco qualificados.
 
-**A solucao:** Use o **Title Builder** do FeedFlow para enriquecer titulos automaticamente.
+**A solução:** Use o **Title Builder** do FeedFlow para enriquecer títulos automaticamente.
 
 <Steps>
 
 1. Acesse **Feed > Title Builder**
-2. Escolha um template otimizado para sua categoria (Moda, Eletronicos, Casa)
-3. O FeedFlow combina marca, tipo de produto, atributos e variantes para gerar titulos completos
+2. Escolha um template otimizado para sua categoria (Moda, Eletrônicos, Casa)
+3. O FeedFlow combina marca, tipo de produto, atributos e variantes para gerar títulos completos
 4. Revise o preview antes de aplicar
 
 </Steps>
 
-Consulte o guia [Titulos que Vendem no Google Shopping](/guides/google-titles) para estrategias detalhadas.
+Consulte o guia [Títulos que Vendem no Google Shopping](/guides/google-titles) para estratégias detalhadas.
 
-### 4. Imagem de baixa resolucao
+### 4. Imagem de baixa resolução
 
-**O problema:** Imagens menores que 500x500px sao rejeitadas pelo Google Shopping. Imagens entre 500x500 e 1000x1000 sao aceitas, mas perdem destaque visual.
+**O problema:** Imagens menores que 500x500px são rejeitadas pelo Google Shopping. Imagens entre 500x500 e 1000x1000 são aceitas, mas perdem destaque visual.
 
-**A solucao:**
+**A solução:**
 
 <Steps>
 
 1. Verifique as imagens dos seus produtos na Nuvemshop
-2. Substitua imagens com resolucao abaixo de **1000x1000px**
+2. Substitua imagens com resolução abaixo de **1000x1000px**
 3. Use fundo branco para produtos (Google recomenda)
 4. Evite textos, marcas d'agua ou bordas na imagem principal
 
 </Steps>
 
 <Aside type="note">
-O FeedFlow mostra um aviso no painel quando detecta imagens com resolucao abaixo do ideal. Use o filtro de avisos para encontrar todos os produtos afetados.
+O FeedFlow mostra um aviso no painel quando detecta imagens com resolução abaixo do ideal. Use o filtro de avisos para encontrar todos os produtos afetados.
 </Aside>
 
 ### 5. Categoria Google ausente
 
-**O problema:** Produtos sem categoria Google mapeada recebem classificacao automatica do Google, que frequentemente e incorreta. Isso coloca o produto no leilao errado e reduz a relevancia.
+**O problema:** Produtos sem categoria Google mapeada recebem classificação automática do Google, que frequentemente é incorreta. Isso coloca o produto no leilão errado e reduz a relevância.
 
-**A solucao:**
+**A solução:**
 
 <Steps>
 
@@ -114,19 +114,19 @@ O FeedFlow mostra um aviso no painel quando detecta imagens com resolucao abaixo
 
 ## Compliance Checker (Premium)
 
-No plano Premium, voce tem acesso ao **Compliance Checker** detalhado, que mostra:
+No plano Premium, você tem acesso ao **Compliance Checker** detalhado, que mostra:
 
 <CardGrid>
   <Card title="Erros por plataforma" icon="warning">
-    Veja exatamente quais campos estao com problema em cada plataforma. Google pode aceitar algo que o Meta rejeita, e vice-versa.
+    Veja exatamente quais campos estão com problema em cada plataforma. Google pode aceitar algo que o Meta rejeita, e vice-versa.
   </Card>
 
-  <Card title="Prioridade de correcao" icon="list">
-    Os erros sao ordenados por impacto. Corrija os de cima primeiro para o maior ganho no score.
+  <Card title="Prioridade de correção" icon="list">
+    Os erros são ordenados por impacto. Corrija os de cima primeiro para o maior ganho no score.
   </Card>
 
-  <Card title="Historico de score" icon="graph">
-    Acompanhe a evolucao do score ao longo do tempo. Veja se suas correcoes estao surtindo efeito.
+  <Card title="Histórico de score" icon="graph">
+    Acompanhe a evolução do score ao longo do tempo. Veja se suas correções estão surtindo efeito.
   </Card>
 
   <Card title="Export CSV" icon="document">
@@ -134,35 +134,35 @@ No plano Premium, voce tem acesso ao **Compliance Checker** detalhado, que mostr
   </Card>
 </CardGrid>
 
-## Export CSV para correcao em lote
+## Export CSV para correção em lote
 
-Se voce tem muitos erros para corrigir, o caminho mais rapido e:
+Se você tem muitos erros para corrigir, o caminho mais rápido é:
 
 <Steps>
 
 1. No Compliance Checker, clique em **Exportar CSV**
 2. Abra o arquivo e filtre por tipo de erro
-3. Corrija os dados na Nuvemshop (em lote, se possivel)
-4. Aguarde a proxima sincronizacao do FeedFlow
+3. Corrija os dados na Nuvemshop (em lote, se possível)
+4. Aguarde a próxima sincronização do FeedFlow
 5. Verifique o score novamente
 
 </Steps>
 
 ## Quando o score sobe?
 
-O Feed Quality Score e recalculado a cada ciclo de geracao do feed. Depois de corrigir erros na Nuvemshop:
+O Feed Quality Score é recalculado a cada ciclo de geração do feed. Depois de corrigir erros na Nuvemshop:
 
 1. O FeedFlow sincroniza os dados atualizados
-2. O feed e regenerado com os dados corrigidos
-3. O score e recalculado automaticamente
+2. O feed é regenerado com os dados corrigidos
+3. O score é recalculado automaticamente
 
 <Aside type="tip">
-Se voce corrigiu varios erros e quer ver o resultado imediatamente, force uma geracao manual em **Feed > Gerar agora**. O novo score aparece em poucos minutos.
+Se você corrigiu vários erros e quer ver o resultado imediatamente, force uma geração manual em **Feed > Gerar agora**. O novo score aparece em poucos minutos.
 </Aside>
 
 ## Metas recomendadas
 
-- **Abaixo de 60:** feed com problemas serios — muitas rejeicoes, visibilidade comprometida
-- **60 a 79:** funcional, mas com espaco para melhoria significativa
-- **80 a 89:** bom, correcoes menores podem fazer diferenca
-- **90 a 100:** excelente — seu feed esta competitivo e otimizado
+- **Abaixo de 60:** feed com problemas sérios — muitas rejeições, visibilidade comprometida
+- **60 a 79:** funcional, mas com espaço para melhoria significativa
+- **80 a 89:** bom, correções menores podem fazer diferença
+- **90 a 100:** excelente — seu feed está competitivo e otimizado

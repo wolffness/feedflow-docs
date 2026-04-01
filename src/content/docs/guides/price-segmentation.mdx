@@ -1,19 +1,19 @@
 ---
-title: Segmentacao por Faixa de Preco
-description: Use custom labels para segmentar campanhas por faixa de preco e otimizar lances.
+title: Segmentação por Faixa de Preço
+description: Use custom labels para segmentar campanhas por faixa de preço e otimizar lances.
 ---
 
 import { Aside, Steps, Card, CardGrid } from '@astrojs/starlight/components';
 
 ## O problema
 
-Campanhas de catalogo (Google Shopping, Meta Advantage+) tratam todos os produtos com o mesmo lance por padrao. Isso significa que um produto de **R$50** e um de **R$500** recebem o mesmo CPC. O resultado? Voce gasta a mesma verba para anunciar uma camiseta basica e um smartphone, mesmo que o smartphone gere 10x mais receita por venda.
+Campanhas de catálogo (Google Shopping, Meta Advantage+) tratam todos os produtos com o mesmo lance por padrão. Isso significa que um produto de **R$50** e um de **R$500** recebem o mesmo CPC. O resultado? Você gasta a mesma verba para anunciar uma camiseta básica e um smartphone, mesmo que o smartphone gere 10x mais receita por venda.
 
-## A solucao
+## A solução
 
-Com **custom labels de faixa de preco** no FeedFlow, voce adiciona uma marcacao automatica a cada produto indicando sua faixa de preco. Depois, nas plataformas de anuncio, voce cria campanhas separadas por faixa e define lances proporcionais ao retorno esperado.
+Com **custom labels de faixa de preço** no FeedFlow, você adiciona uma marcação automática a cada produto indicando sua faixa de preço. Depois, nas plataformas de anúncio, você cria campanhas separadas por faixa e define lances proporcionais ao retorno esperado.
 
-Produtos caros recebem lances maiores (porque o ROAS justifica). Produtos baratos recebem lances menores (porque a margem e apertada).
+Produtos caros recebem lances maiores (porque o ROAS justifica). Produtos baratos recebem lances menores (porque a margem é apertada).
 
 ## Como configurar no FeedFlow
 
@@ -21,30 +21,30 @@ Produtos caros recebem lances maiores (porque o ROAS justifica). Produtos barato
 
 1. **Acesse Custom Labels**
 
-   No painel do FeedFlow, va em **Feed > Custom Labels**. Voce tem 5 slots disponiveis (custom_label_0 ate custom_label_4).
+   No painel do FeedFlow, vá em **Feed > Custom Labels**. Você tem 5 slots disponíveis (custom_label_0 até custom_label_4).
 
-2. **Escolha um slot disponivel**
+2. **Escolha um slot disponível**
 
-   Selecione um slot que nao esteja em uso. Se for sua primeira segmentacao, use o `custom_label_0`.
+   Selecione um slot que não esteja em uso. Se for sua primeira segmentação, use o `custom_label_0`.
 
-3. **Selecione o tipo "Faixa de Preco"**
+3. **Selecione o tipo "Faixa de Preço"**
 
-   No tipo de label, escolha **Faixa de Preco**. O FeedFlow vai usar o preco final do produto (com desconto, se houver) para classificar automaticamente.
+   No tipo de label, escolha **Faixa de Preço**. O FeedFlow vai usar o preço final do produto (com desconto, se houver) para classificar automaticamente.
 
 4. **Defina suas faixas**
 
-   Configure as faixas que fazem sentido para o seu catalogo. Sugestao para a maioria das lojas:
+   Configure as faixas que fazem sentido para o seu catálogo. Sugestão para a maioria das lojas:
 
-   | Faixa | De | Ate | Label gerado |
+   | Faixa | De | Até | Label gerado |
    |---|---|---|---|
-   | Economico | R$0 | R$50 | `Economico` |
-   | Intermediario | R$50 | R$200 | `Intermediario` |
+   | Econômico | R$0 | R$50 | `Econômico` |
+   | Intermediário | R$50 | R$200 | `Intermediário` |
    | Premium | R$200 | R$500 | `Premium` |
    | Luxo | R$500 | -- | `Luxo` |
 
-5. **Salve e aguarde o proximo ciclo**
+5. **Salve e aguarde o próximo ciclo**
 
-   Os labels serao aplicados automaticamente na proxima geracao do feed. Voce pode forcar uma geracao manual se quiser ver o resultado imediatamente.
+   Os labels serão aplicados automaticamente na próxima geração do feed. Você pode forçar uma geração manual se quiser ver o resultado imediatamente.
 
 </Steps>
 
@@ -54,20 +54,20 @@ Com os labels no feed, crie campanhas segmentadas no Meta:
 
 <Steps>
 
-1. **Crie um conjunto de catalogo para cada faixa**
+1. **Crie um conjunto de catálogo para cada faixa**
 
-   No Gerenciador de Anuncios, crie um novo conjunto de anuncios do tipo Catalogo. No filtro de produtos, selecione `custom_label_0` e escolha a faixa desejada.
+   No Gerenciador de Anúncios, crie um novo conjunto de anúncios do tipo Catálogo. No filtro de produtos, selecione `custom_label_0` e escolha a faixa desejada.
 
 2. **Ajuste os lances por faixa**
 
    - **Luxo (R$500+):** lance mais agressivo — o ticket alto compensa o CPC maior
    - **Premium (R$200-500):** lance moderado-alto
-   - **Intermediario (R$50-200):** lance padrao
-   - **Economico (ate R$50):** lance conservador — margens apertadas exigem eficiencia
+   - **Intermediário (R$50-200):** lance padrão
+   - **Econômico (até R$50):** lance conservador — margens apertadas exigem eficiência
 
-3. **Distribua o orcamento proporcionalmente**
+3. **Distribua o orçamento proporcionalmente**
 
-   Invista mais nas faixas que geram mais receita, nao necessariamente nas que tem mais produtos.
+   Invista mais nas faixas que geram mais receita, não necessariamente nas que têm mais produtos.
 
 </Steps>
 
@@ -77,12 +77,12 @@ Com os labels no feed, crie campanhas segmentadas no Meta:
 
 1. **Crie campanhas Performance Max separadas**
 
-   No Google Ads, crie uma campanha Performance Max para cada faixa de preco. No grupo de listagem, filtre por `custom_label_0`.
+   No Google Ads, crie uma campanha Performance Max para cada faixa de preço. No grupo de listagem, filtre por `custom_label_0`.
 
 2. **Defina ROAS alvo diferente por faixa**
 
-   - **Luxo:** ROAS alvo menor (ex: 300%) — o ticket alto gera receita mesmo com menos conversoes
-   - **Economico:** ROAS alvo maior (ex: 800%) — precisa de volume para compensar o ticket baixo
+   - **Luxo:** ROAS alvo menor (ex: 300%) — o ticket alto gera receita mesmo com menos conversões
+   - **Econômico:** ROAS alvo maior (ex: 800%) — precisa de volume para compensar o ticket baixo
 
 3. **Monitore e ajuste semanalmente**
 
@@ -93,41 +93,41 @@ Com os labels no feed, crie campanhas segmentadas no Meta:
 ## Resultado esperado
 
 <Aside type="tip">
-Lojas que segmentam campanhas por faixa de preco observam, em media, um aumento de **20-40% no ROAS**. O ganho vem da alocacao inteligente de verba: mais dinheiro onde o retorno e maior.
+Lojas que segmentam campanhas por faixa de preço observam, em média, um aumento de **20-40% no ROAS**. O ganho vem da alocação inteligente de verba: mais dinheiro onde o retorno é maior.
 </Aside>
 
 ## Exemplo real
 
-> Uma loja de calcados segmenta seus produtos em 3 faixas: Economico (chinelos e rasteirinhas ate R$80), Intermediario (tenis e sapatilhas de R$80 a R$250) e Premium (botas e sapatos sociais acima de R$250).
+> Uma loja de calçados segmenta seus produtos em 3 faixas: Econômico (chinelos e rasteirinhas até R$80), Intermediário (tênis e sapatilhas de R$80 a R$250) e Premium (botas e sapatos sociais acima de R$250).
 >
-> O resultado: a faixa Premium recebe **50% do orcamento** e gera **70% da receita**. Antes da segmentacao, os chinelos de R$40 consumiam a mesma verba que botas de R$350 — e o ROAS geral era 30% menor.
+> O resultado: a faixa Premium recebe **50% do orçamento** e gera **70% da receita**. Antes da segmentação, os chinelos de R$40 consumiam a mesma verba que botas de R$350 — e o ROAS geral era 30% menor.
 
 ## Templates prontos
 
 <CardGrid>
   <Card title="3 Faixas (Simples)" icon="rocket">
-    Ideal para catalogos pequenos (ate 500 produtos) ou quem esta comecando:
+    Ideal para catálogos pequenos (até 500 produtos) ou quem está começando:
 
-    - **Economico:** ate R$100
-    - **Intermediario:** R$100 a R$300
+    - **Econômico:** até R$100
+    - **Intermediário:** R$100 a R$300
     - **Premium:** acima de R$300
 
-    Facil de gerenciar, bom para quem nao quer criar muitas campanhas.
+    Fácil de gerenciar, bom para quem não quer criar muitas campanhas.
   </Card>
 
   <Card title="5 Faixas (Detalhado)" icon="bars">
-    Ideal para catalogos grandes (1000+ produtos) ou lojas com ticket variado:
+    Ideal para catálogos grandes (1000+ produtos) ou lojas com ticket variado:
 
-    - **Impulso:** ate R$30
-    - **Economico:** R$30 a R$100
-    - **Intermediario:** R$100 a R$300
+    - **Impulso:** até R$30
+    - **Econômico:** R$30 a R$100
+    - **Intermediário:** R$100 a R$300
     - **Premium:** R$300 a R$700
     - **Luxo:** acima de R$700
 
-    Permite controle granular de lances e orcamento por faixa.
+    Permite controle granular de lances e orçamento por faixa.
   </Card>
 </CardGrid>
 
 <Aside type="note">
-As faixas sugeridas sao ponto de partida. Ajuste conforme o ticket medio e a distribuicao de precos do seu catalogo. O ideal e que cada faixa tenha pelo menos 50 produtos para que as plataformas de anuncio consigam otimizar.
+As faixas sugeridas são ponto de partida. Ajuste conforme o ticket médio e a distribuição de preços do seu catálogo. O ideal é que cada faixa tenha pelo menos 50 produtos para que as plataformas de anúncio consigam otimizar.
 </Aside>
